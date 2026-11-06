@@ -6,7 +6,11 @@
 <meta name="theme-color" content="#000000">
 <title>velocify v2</title>
 <link rel="icon" href="data:,">
-<style>:root{--bg:#000000;color-scheme:dark}html,body{margin:0;width:100%;height:100%;background:var(--bg) url("wallpaper.png") center/cover no-repeat fixed}</style>
+<style>
+:root{--bg:#000000;--surface:#dbeaff;--border:#ffffff;color-scheme:dark}
+html,body{margin:0;width:100%;height:100%;background:var(--bg) url("wallpaper.png") center/cover no-repeat fixed}
+.taskbar{position:fixed;left:50%;bottom:18px;width:min(560px,calc(100vw - 32px));height:62px;transform:translateX(-50%);background:color-mix(in srgb,var(--surface) 22%,transparent);border:1px solid color-mix(in srgb,var(--border) 36%,transparent);border-radius:20px;box-shadow:0 10px 32px color-mix(in srgb,var(--bg) 34%,transparent);backdrop-filter:blur(22px) saturate(140%);-webkit-backdrop-filter:blur(22px) saturate(140%)}
+</style>
 </head>
-<body></body>
+<body><div class="taskbar" role="toolbar" aria-label="taskbar"></div></body>
 </html>
