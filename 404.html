@@ -8,11 +8,25 @@
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="fonts/body.css">
 <style>
-:root{--bg:#000000;--surface:#dbeaff;--border:#ffffff;--text:#ffffff;color-scheme:dark}
+:root{--bg:#000000;--surface:#dbeaff;--border:#ffffff;--text:#ffffff;--muted:#cbd6e8;color-scheme:dark}
 html,body{margin:0;width:100%;height:100%;background:var(--bg) url("wallpaper.png") center/cover no-repeat fixed}
 .taskbar{position:fixed;left:50%;bottom:12px;width:min(680px,calc(100vw - 28px));height:48px;transform:translateX(-50%);background:color-mix(in srgb,var(--surface) 12%,transparent);border:1px solid color-mix(in srgb,var(--border) 18%,transparent);border-radius:15px;box-shadow:0 8px 24px color-mix(in srgb,var(--bg) 26%,transparent);backdrop-filter:blur(18px) saturate(130%);-webkit-backdrop-filter:blur(18px) saturate(130%)}
+.start-button{position:absolute;left:6px;top:5px;width:38px;height:38px;padding:0;display:grid;place-items:center;overflow:hidden;color:var(--text);background:transparent;border:0;border-radius:11px;cursor:pointer;transition:background .18s ease,transform .18s ease}
+.start-button img{width:38px;height:30px;object-fit:contain;transform:scale(1.45);transition:transform .18s ease,filter .18s ease}
+.start-button:hover{background:color-mix(in srgb,var(--surface) 16%,transparent);transform:translateY(-2px)}
+.start-button:hover img{transform:scale(1.58);filter:drop-shadow(0 3px 8px color-mix(in srgb,var(--surface) 48%,transparent))}
+.start-button:focus-visible,.window-close:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+.start-button:active{transform:translateY(0) scale(.94)}
 .clock{position:absolute;top:0;right:12px;height:100%;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:2px;color:var(--text);font:600 10px/1.2 Montserrat,sans-serif;font-variant-numeric:tabular-nums;text-shadow:0 1px 3px var(--bg)}
+.start-window{position:fixed;left:max(14px,calc(50% - 340px));bottom:72px;width:min(340px,calc(100vw - 28px));height:210px;box-sizing:border-box;padding:46px 24px 24px;color:var(--text);background:color-mix(in srgb,var(--surface) 17%,transparent);border:1px solid color-mix(in srgb,var(--border) 24%,transparent);border-radius:18px;box-shadow:0 20px 48px color-mix(in srgb,var(--bg) 44%,transparent);backdrop-filter:blur(24px) saturate(135%);-webkit-backdrop-filter:blur(24px) saturate(135%);animation:window-in .2s ease-out}
+.start-window[hidden]{display:none}
+.window-close{position:absolute;top:10px;right:10px;width:30px;height:30px;padding:0;color:var(--text);background:transparent;border:0;border-radius:9px;font:400 22px/1 Montserrat,sans-serif;cursor:pointer;transition:background .18s ease,transform .18s ease}
+.window-close:hover{background:color-mix(in srgb,var(--surface) 18%,transparent);transform:scale(1.06)}
+.window-close:active{transform:scale(.94)}
+.start-window h1{margin:0 0 9px;font:700 34px/1 Montserrat,sans-serif;letter-spacing:-1px}
+.start-window p{margin:0;color:var(--muted);font:400 14px/1.4 Montserrat,sans-serif}
+@keyframes window-in{from{opacity:0;transform:translateY(10px) scale(.97)}to{opacity:1;transform:none}}
 </style>
 </head>
-<body><div class="taskbar" role="toolbar" aria-label="taskbar"><time class="clock"><span class="clock-time"></span><span class="clock-date"></span></time></div><script>const clock=document.querySelector('.clock'),time=clock.querySelector('.clock-time'),date=clock.querySelector('.clock-date');function updateClock(){const now=new Date();time.textContent=now.toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});date.textContent=now.toLocaleDateString();clock.dateTime=now.toISOString()}updateClock();setInterval(updateClock,1000)</script></body>
+<body><section class="start-window" role="dialog" aria-labelledby="start-title" hidden><button class="window-close" type="button" aria-label="close">×</button><h1 id="start-title">velocify v2</h1><p>made by velx</p></section><div class="taskbar" role="toolbar" aria-label="taskbar"><button class="start-button" type="button" aria-label="open start window" aria-expanded="false"><img src="start-logo.png" alt=""></button><time class="clock"><span class="clock-time"></span><span class="clock-date"></span></time></div><script>const clock=document.querySelector('.clock'),time=clock.querySelector('.clock-time'),date=clock.querySelector('.clock-date'),startButton=document.querySelector('.start-button'),startWindow=document.querySelector('.start-window'),closeButton=document.querySelector('.window-close');function updateClock(){const now=new Date();time.textContent=now.toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});date.textContent=now.toLocaleDateString();clock.dateTime=now.toISOString()}function setWindow(open){startWindow.hidden=!open;startButton.setAttribute('aria-expanded',String(open));if(open)closeButton.focus();else startButton.focus()}startButton.addEventListener('click',()=>setWindow(startWindow.hidden));closeButton.addEventListener('click',()=>setWindow(false));document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!startWindow.hidden)setWindow(false)});updateClock();setInterval(updateClock,1000)</script></body>
 </html>
