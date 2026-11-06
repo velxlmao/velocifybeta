@@ -44,7 +44,7 @@
 		element.className = "vc-avatar";
 		element.style.width = size + "px";
 		element.style.height = size + "px";
-		element.style.background = color(user.username || user.displayName);
+		element.style.background = user.avatar ? "transparent" : color(user.username || user.displayName);
 		if (user.avatar) {
 			const image = document.createElement("img");
 			image.src = user.avatar;
@@ -55,13 +55,22 @@
 	}
 	async function fileToAvatar(file) {
 		if (!file || !file.size) return "";
-		const bitmap = await createImageBitmap(file);
+		const source = await new Promise((resolve, reject) => {
+			const reader = new FileReader();
+			reader.onload = () => {
+				const image = new Image();
+				image.onload = () => resolve(image);
+				image.onerror = reject;
+				image.src = reader.result;
+			};
+			reader.onerror = reject;
+			reader.readAsDataURL(file);
+		});
 		const canvas = document.createElement("canvas");
 		canvas.width = canvas.height = 128;
 		const context = canvas.getContext("2d");
-		const side = Math.min(bitmap.width, bitmap.height);
-		context.drawImage(bitmap, (bitmap.width - side) / 2, (bitmap.height - side) / 2, side, side, 0, 0, 128, 128);
-		bitmap.close();
+		const side = Math.min(source.width, source.height);
+		context.drawImage(source, (source.width - side) / 2, (source.height - side) / 2, side, side, 0, 0, 128, 128);
 		return canvas.toDataURL("image/webp", 0.82);
 	}
 	async function request(path, options = {}) {
@@ -239,6 +248,12 @@
 		if (!server) { view = { type: "home" }; return renderSidebar(); }
 		const title = document.createElement("span");
 		title.textContent = server.name;
+		if (server.official) {
+			const official = document.createElement("strong");
+			official.className = "vc-official";
+			official.textContent = "official";
+			title.append(" ", official);
+		}
 		sideHead.append(title);
 		if (server.ownerId === data.user.id) {
 			const settings = iconButton("server settings", "M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1");
@@ -262,12 +277,20 @@
 		}
 		sideList.append(row);
 		for (const channel of server.channels) {
+			const channelRow = document.createElement("div");
+			channelRow.className = "vc-channel-row";
 			const item = document.createElement("button");
 			item.className = "vc-list-item" + (view.channelId === channel.id ? " active" : "");
 			item.type = "button";
 			item.textContent = "# " + channel.name;
 			item.addEventListener("click", () => { view.channelId = channel.id; render(); });
-			sideList.append(item);
+			channelRow.append(item);
+			if (server.ownerId === data.user.id) {
+				const settings = iconButton("channel settings", "M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1");
+				settings.addEventListener("click", () => channelSettingsModal(server, channel));
+				channelRow.append(settings);
+			}
+			sideList.append(channelRow);
 		}
 	}
 	function renderProfile() {
@@ -281,7 +304,10 @@
 		username.className = "vc-username";
 		username.textContent = "@" + data.user.username;
 		copy.append(display, username);
-		profileElement.append(copy);
+		const settings = iconButton("user settings", "M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z");
+		settings.classList.add("vc-settings-button");
+		settings.addEventListener("click", profileSettingsModal);
+		profileElement.append(copy, settings);
 	}
 	function renderMain() {
 		chatHead.replaceChildren();
@@ -302,7 +328,7 @@
 		const friend = data.friends.find((item) => item.id === view.userId);
 		if (!friend) { view = { type: "home" }; return renderMain(); }
 		chatHead.textContent = "@ " + friend.displayName;
-		for (const message of data.dms[friend.id] || []) renderMessage(message, message.authorId === data.user.id ? data.user : friend);
+		for (const message of data.dms[friend.id] || []) renderMessage(message, message.authorId === data.user.id ? data.user : friend, { type: "dm", userId: friend.id });
 		compose.hidden = false;
 		composeInput.placeholder = "message @" + friend.username;
 	}
@@ -312,11 +338,11 @@
 		if (!server || !channel) return;
 		view.channelId = channel.id;
 		chatHead.textContent = "# " + channel.name;
-		for (const message of channel.messages) renderMessage(message, message.author || data.user);
+		for (const message of channel.messages) renderMessage(message, message.author || data.user, { type: "server", server, channel });
 		compose.hidden = false;
 		composeInput.placeholder = "message #" + channel.name;
 	}
-	function renderMessage(message, author) {
+	function renderMessage(message, author, context) {
 		const item = document.createElement("article");
 		item.className = "vc-message";
 		const copy = document.createElement("div");
@@ -329,10 +355,28 @@
 		const time = document.createElement("time");
 		time.className = "vc-message-time";
 		time.textContent = new Date(message.at).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+		if (message.editedAt) time.textContent += " (edited)";
 		const text = document.createElement("div");
 		text.className = "vc-message-text";
 		text.textContent = message.text;
 		head.append(name, time);
+		const own = message.authorId === data.user.id;
+		const canDelete = own || context.type === "server" && context.server.ownerId === data.user.id;
+		if (own || canDelete) {
+			const actions = document.createElement("span");
+			actions.className = "vc-message-actions";
+			if (own) {
+				const edit = iconButton("edit message", "M4 20h4L19 9l-4-4L4 16v4ZM13.5 6.5l4 4");
+				edit.addEventListener("click", () => editMessageModal(message, context));
+				actions.append(edit);
+			}
+			if (canDelete) {
+				const remove = iconButton("delete message", "M5 7h14M9 7V4h6v3M8 10v8M12 10v8M16 10v8M7 7l1 14h8l1-14");
+				remove.addEventListener("click", () => deleteMessage(message, context));
+				actions.append(remove);
+			}
+			head.append(actions);
+		}
 		copy.append(head, text);
 		item.append(avatar(author, 36), copy);
 		messagesElement.append(item);
@@ -342,14 +386,14 @@
 		modalBody.replaceChildren(content);
 		modal.hidden = false;
 	}
-	function formField(label, name, value = "") {
+	function formField(label, name, value = "", required = true) {
 		const wrapper = document.createElement("label");
 		wrapper.className = "vc-field";
 		wrapper.textContent = label;
 		const input = document.createElement("input");
 		input.name = name;
 		input.value = value;
-		input.required = true;
+		input.required = required;
 		wrapper.append(input);
 		return wrapper;
 	}
@@ -376,7 +420,7 @@
 	}
 	function serverModal() {
 		const container = document.createElement("div");
-		container.append(modalForm("create server", [formField("server name", "name"), formField("custom invite code", "code")], (values) => action("server_create", { name: values.get("name"), code: values.get("code") }), "create server"));
+		container.append(modalForm("create server", [formField("server name", "name"), formField("custom invite code", "code", "", false)], (values) => action("server_create", { name: values.get("name"), code: values.get("code") }), "create server"));
 		const divider = document.createElement("div");
 		divider.className = "vc-divider";
 		container.append(divider, modalForm("join server", [formField("invite code", "code")], (values) => action("server_join", { code: values.get("code") }), "join server"));
@@ -395,7 +439,50 @@
 		fileLabel.className = "vc-field";
 		fileLabel.textContent = "server icon";
 		fileLabel.append(file);
-		openModal(modalForm("server settings", [nameField, fileLabel], async (values) => action("server_update", { serverId: server.id, name: values.get("name"), icon: await fileToAvatar(values.get("icon")) }), "save changes"));
+		const content = document.createElement("div");
+		content.append(modalForm("server settings", [nameField, fileLabel], async (values) => action("server_update", { serverId: server.id, name: values.get("name"), icon: await fileToAvatar(values.get("icon")) }), "save changes"));
+		if (!server.official) {
+			const remove = document.createElement("button");
+			remove.className = "vc-danger";
+			remove.type = "button";
+			remove.textContent = "delete server";
+			remove.addEventListener("click", async () => { await action("server_delete", { serverId: server.id }); modal.hidden = true; view = { type: "home" }; render(); });
+			content.append(remove);
+		}
+		openModal(content);
+	}
+	function channelSettingsModal(server, channel) {
+		const content = document.createElement("div");
+		content.append(modalForm("channel settings", [formField("channel name", "name", channel.name)], (values) => action("channel_update", { serverId: server.id, channelId: channel.id, name: values.get("name") }), "save channel"));
+		const remove = document.createElement("button");
+		remove.className = "vc-danger";
+		remove.type = "button";
+		remove.textContent = "delete channel";
+		remove.addEventListener("click", async () => { await action("channel_delete", { serverId: server.id, channelId: channel.id }); modal.hidden = true; });
+		content.append(remove);
+		openModal(content);
+	}
+	function profileSettingsModal() {
+		const file = document.createElement("input");
+		file.type = "file";
+		file.name = "avatar";
+		file.accept = "image/*";
+		const fileLabel = document.createElement("label");
+		fileLabel.className = "vc-field";
+		fileLabel.textContent = "profile picture";
+		fileLabel.append(file);
+		openModal(modalForm("user settings", [formField("display name", "displayName", data.user.displayName), formField("username", "username", data.user.username), fileLabel], async (values) => {
+			const uploaded = await fileToAvatar(values.get("avatar"));
+			await request("/api/profile", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ token, displayName: values.get("displayName"), username: values.get("username"), avatar: uploaded || data.user.avatar }) });
+			await refresh();
+		}, "save settings"));
+	}
+	function editMessageModal(message, context) {
+		openModal(modalForm("edit message", [formField("message", "text", message.text)], (values) => context.type === "dm" ? action("dm_edit", { userId: context.userId, messageId: message.id, text: values.get("text") }) : action("server_edit", { serverId: context.server.id, channelId: context.channel.id, messageId: message.id, text: values.get("text") }), "save message"));
+	}
+	async function deleteMessage(message, context) {
+		if (context.type === "dm") await action("dm_delete", { userId: context.userId, messageId: message.id });
+		else await action("server_message_delete", { serverId: context.server.id, channelId: context.channel.id, messageId: message.id });
 	}
 	profileForm.addEventListener("submit", async (event) => {
 		event.preventDefault();
