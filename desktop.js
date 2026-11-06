@@ -199,13 +199,13 @@ async function connectProxy(url, signal) {
 		const saved = localStorage.getItem(serviceKey);
 		const servers = [...window.__VELO_SERVICES];
 		if (saved && servers.includes(saved)) servers.unshift(...servers.splice(servers.indexOf(saved), 1));
-		serviceReady = window.connectService(servers, async (serviceUrl, attemptSignal) => {
+		serviceReady = connection.setTransport(window.__VELO_BASE + "lib/e/index.mjs?v=64c6bc76c5b3", [{ wisp: servers[0] }]).then(() => servers[0]).catch(() => window.connectService(servers.slice(1), async (serviceUrl, attemptSignal) => {
 			attemptSignal.throwIfAborted();
 			await connection.setTransport(window.__VELO_BASE + "lib/e/index.mjs?v=64c6bc76c5b3", [{ wisp: serviceUrl }]);
 			const response = await probeClient.fetch(url, { method: "GET", redirect: "follow", signal: attemptSignal });
 			await response.body?.cancel();
 			if (response.status >= 500 || [403, 407, 429].includes(response.status)) throw new Error("upstream unavailable");
-		}, (index, total) => setStatus("connecting to service " + index + "/" + total), signal, 3500).then((service) => {
+		}, (index, total) => setStatus("connecting to service " + (index + 1) + "/" + (total + 1)), signal, 3500)).then((service) => {
 			activeService = service;
 			localStorage.setItem(serviceKey, service);
 			return service;
