@@ -1,0 +1,59 @@
+{
+  "repo": "wasmdotrip/Clustertruck-Port",
+  "revision": "93b8ff3bad28fd3ae203734eaeaa16850bb6acf5",
+  "path": "",
+  "title": "Clustertruck",
+  "kind": "unity",
+  "executable": "ClusterTruckWEB",
+  "assets": {
+    "Build/ClusterTruckWEB.data": [
+      {
+        "name": "Build/ClusterTruckWEB.data.part1",
+        "size": 17182650
+      },
+      {
+        "name": "Build/ClusterTruckWEB.data.part2",
+        "size": 17182650
+      },
+      {
+        "name": "Build/ClusterTruckWEB.data.part3",
+        "size": 17182650
+      },
+      {
+        "name": "Build/ClusterTruckWEB.data.part4",
+        "size": 17182650
+      },
+      {
+        "name": "Build/ClusterTruckWEB.data.part5",
+        "size": 17182650
+      },
+      {
+        "name": "Build/ClusterTruckWEB.data.part6",
+        "size": 17182645
+      }
+    ],
+    "Build/ClusterTruckWEB.wasm": [
+      {
+        "name": "Build/ClusterTruckWEB.wasm.part1",
+        "size": 16918036
+      },
+      {
+        "name": "Build/ClusterTruckWEB.wasm.part2",
+        "size": 16918036
+      },
+      {
+        "name": "Build/ClusterTruckWEB.wasm.part3",
+        "size": 16918036
+      },
+      {
+        "name": "Build/ClusterTruckWEB.wasm.part4",
+        "size": 16918036
+      },
+      {
+        "name": "Build/ClusterTruckWEB.wasm.part5",
+        "size": 16918034
+      }
+    ]
+  },
+  "runtimeBase": "https://velocify-ports.realdashvr.workers.dev/clustertruck/"
+}

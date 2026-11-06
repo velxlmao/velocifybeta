@@ -1,0 +1,39 @@
+{
+  "repo": "web-ports/untitled-goose-game",
+  "revision": "fbdd0473a0f35fabaea9790e7d60330be1788e26",
+  "path": "",
+  "title": "Untitled Goose Game",
+  "kind": "unity",
+  "executable": "Untitled Goose Game",
+  "assets": {
+    "Build/Untitled Goose Game.data": [
+      {
+        "name": "Build/Untitled Goose Game.data.part1",
+        "size": 15934737
+      },
+      {
+        "name": "Build/Untitled Goose Game.data.part2",
+        "size": 15934737
+      },
+      {
+        "name": "Build/Untitled Goose Game.data.part3",
+        "size": 15934737
+      },
+      {
+        "name": "Build/Untitled Goose Game.data.part4",
+        "size": 15934737
+      }
+    ],
+    "Build/Untitled Goose Game.wasm": [
+      {
+        "name": "Build/Untitled Goose Game.wasm.part1",
+        "size": 18301364
+      },
+      {
+        "name": "Build/Untitled Goose Game.wasm.part2",
+        "size": 18301363
+      }
+    ]
+  },
+  "runtimeBase": "https://velocify-ports.realdashvr.workers.dev/untitled-goose-game/"
+}

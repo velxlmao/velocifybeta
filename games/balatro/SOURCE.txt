@@ -1,0 +1,2 @@
+https://github.com/W0W53R/web-balatro/tree/53ddedfdd2e44d29b922210a92b85b2bfd57d9c2
+Requires a locally supplied Balatro.exe or .love file.

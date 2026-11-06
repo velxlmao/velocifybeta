@@ -1,0 +1,44 @@
+{
+  "repo": "genizy/web-port",
+  "revision": "a8bea5fd11f88e5a9192857f434e299c40efe7e6",
+  "path": "baldi-plus/",
+  "title": "Baldi’s Basics Plus",
+  "kind": "unity",
+  "executable": "BaldiPlusNew",
+  "assets": {
+    "Build/BaldiPlusNew.data": [
+      {
+        "name": "Build/BaldiPlusNew.data.part1",
+        "size": 20866662
+      },
+      {
+        "name": "Build/BaldiPlusNew.data.part2",
+        "size": 20866662
+      },
+      {
+        "name": "Build/BaldiPlusNew.data.part3",
+        "size": 20866662
+      },
+      {
+        "name": "Build/BaldiPlusNew.data.part4",
+        "size": 20866662
+      },
+      {
+        "name": "Build/BaldiPlusNew.data.part5",
+        "size": 44699
+      }
+    ],
+    "Build/BaldiPlusNew.wasm": [
+      {
+        "name": "Build/BaldiPlusNew.wasm.part1",
+        "size": 20866662
+      },
+      {
+        "name": "Build/BaldiPlusNew.wasm.part2",
+        "size": 20132707
+      }
+    ]
+  },
+  "remote": {},
+  "runtimeBase": "https://velocify-ports.realdashvr.workers.dev/baldi-plus/"
+}

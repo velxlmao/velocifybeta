@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><head>
+<script src="../performance.js"></script>
+<script src="../game-assets.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Velocify tables</title><link rel="stylesheet" href="../../index.css"><link rel="stylesheet" href="casino.css?v=2"></head>
+<body><main>
+<header><h1 id="title">blackjack</h1><p class="muted">play money only</p></header>
+<section id="lobby" class="panel">
+<label>your name<input id="name" maxlength="20" autocomplete="nickname" placeholder="name"></label>
+<button id="create">create room</button><p class="muted">or join a friend</p>
+<form id="join"><label>room code<input id="code" maxlength="6" placeholder="ABC234" autocomplete="off" pattern="[A-Za-z2-9]{6}" required></label><button>join room</button></form>
+<p class="muted">$50 to start. up to 8 players per room.</p>
+</section>
+<section id="room" hidden>
+<div class="room-head"><h2 id="room-code"></h2><button id="copy">copy invite</button><button id="leave">leave</button></div>
+<p id="phase" role="status"></p><p id="instruction"></p><div class="host-controls"><button id="play" hidden>play</button><button id="deal" hidden>deal cards</button></div>
+<div class="table panel"><div id="shoe"><div class="deck"><span>v</span></div><span id="deck-count">52 cards</span></div><div id="dealer"></div><div id="wheel" hidden><div id="wheel-ring"></div><strong id="number">?</strong></div><p id="table-note" class="muted"></p></div>
+<div class="controls panel"><strong id="balance"></strong><form id="bet-form"><label>bet ($)<input id="amount" type="number" min="1" step="0.01" value="5" required></label><label id="choice-label" hidden>bet on<select id="choice"><option>red</option><option>black</option><option>even</option><option>odd</option></select></label><button id="bet">place bet</button><button id="cancel-bet" type="button" hidden>cancel bet</button></form><p id="bet-help" class="muted"></p><div class="actions"><button id="hit" hidden>hit</button><button id="stand" hidden>stand</button><button id="refill" hidden>get $50</button></div></div>
+<div id="players" class="players"></div>
+</section><p id="error" role="alert"></p>
+</main><script src="casino.js?v=2"></script></body></html>

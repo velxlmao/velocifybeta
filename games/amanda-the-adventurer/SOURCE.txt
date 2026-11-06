@@ -1,0 +1,2 @@
+https://github.com/genizy/web-port/tree/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer
+Unofficial browser build.

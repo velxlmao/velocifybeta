@@ -1,0 +1,76 @@
+{
+  "repo": "genizy/web-port",
+  "revision": "a8bea5fd11f88e5a9192857f434e299c40efe7e6",
+  "path": "pizza-tower/",
+  "title": "Pizza Tower",
+  "kind": "gamemaker",
+  "executable": "runner",
+  "assets": {
+    "game.unx": [
+      {
+        "name": "game.unx.part1",
+        "size": 20435645
+      },
+      {
+        "name": "game.unx.part2",
+        "size": 20435645
+      },
+      {
+        "name": "game.unx.part3",
+        "size": 20435645
+      },
+      {
+        "name": "game.unx.part4",
+        "size": 20435645
+      },
+      {
+        "name": "game.unx.part5",
+        "size": 20435645
+      },
+      {
+        "name": "game.unx.part6",
+        "size": 20435645
+      },
+      {
+        "name": "game.unx.part7",
+        "size": 20435645
+      },
+      {
+        "name": "game.unx.part8",
+        "size": 20435645
+      },
+      {
+        "name": "game.unx.part9",
+        "size": 20435645
+      },
+      {
+        "name": "game.unx.part10",
+        "size": 20435645
+      },
+      {
+        "name": "game.unx.part11",
+        "size": 20435645
+      },
+      {
+        "name": "game.unx.part12",
+        "size": 20435645
+      },
+      {
+        "name": "game.unx.part13",
+        "size": 20435643
+      }
+    ],
+    "runner.data": [
+      {
+        "name": "runner.data",
+        "size": 17299299
+      }
+    ],
+    "runner.wasm": [
+      {
+        "name": "runner.wasm",
+        "size": 4598369
+      }
+    ]
+  }
+}

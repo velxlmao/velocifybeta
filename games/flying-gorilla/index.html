@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+<script src="../performance.js"></script>
+<script src="../game-assets.js"></script>
+<script src="../browser-saves.js"></script>
+<script>window.gameDownloadSizes={"vb.data.part1":20866662,"vb.data.part2":19889000,"vb.wasm.part1":20866662,"vb.wasm.part2":12689902};</script>
+<script src="../download-progress.js"></script>
+<base href="https://cdn.jsdelivr.net/gh/web-ports/flying-gorilla@b6873536e2b227d76800f08a42183949f9b1beb5/">
+	
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity Web Player | Flying Gorilla</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+  </head>
+  <body>
+        <div id="loading-text"
+    style="color: white; font-size: 48px; font-family: cursive; text-align: center; margin-top: 20px;"> LOADING...
+  </div>
+    <div id="unity-container">
+      <canvas id="unity-canvas" width=960 height=540 tabindex="-1"></canvas>
+      <div id="unity-loading-bar">
+        <div id="unity-logo"></div>
+        <div id="unity-progress-bar-empty">
+          <div id="unity-progress-bar-full"></div>
+        </div>
+      </div>
+      <div id="unity-warning"> </div>
+    </div>
+    <script>
+      var loadingText = document.querySelector("#loading-text");
+    let totalBytes = 0;
+    let loadedBytes = 0;
+
+    async function mergeFiles(paths) { return (await window.gameAssets.fromPaths(paths)).url; }
+
+    function getParts(file, start, end) {
+      let parts = [];
+      for (let i = start; i <= end; i++) {
+        parts.push(file + ".part" + i);
+      }
+      return parts;
+    }
+    (async () => {
+      const [dataUrl, wasmUrl] = await Promise.all([
+        mergeFiles(getParts("Build/vb.data", 1, 2), "vb.data"),
+        mergeFiles(getParts("Build/vb.wasm", 1, 2), "vb.wasm"),
+      ]);
+      var container = document.querySelector("#unity-container");
+      var canvas = document.querySelector("#unity-canvas");
+      var loadingBar = document.querySelector("#unity-loading-bar");
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+      var warningBanner = document.querySelector("#unity-warning");
+
+      // Shows a temporary message banner/ribbon for a few seconds, or
+      // a permanent error message on top of the canvas if type=='error'.
+      // If type=='warning', a yellow highlight color is used.
+      // Modify or remove this function to customize the visually presented
+      // way that non-critical warnings and error messages are presented to the
+      // user.
+      function unityShowBanner(msg, type) {
+      }
+
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/vb.loader.js";
+      var config = {
+        arguments: [],
+        dataUrl: dataUrl,
+        frameworkUrl: new URL("framework.js",location.href).href,
+        codeUrl: wasmUrl,
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "",
+        productName: "Flying Gorilla",
+        productVersion: "1.0",
+        showBanner: unityShowBanner,
+        // errorHandler: function(err, url, line) {
+        //    alert("error " + err + " occurred at line " + line);
+        //    // Return 'true' if you handled this error and don't want Unity
+        //    // to process it further, 'false' otherwise.
+        //    return true;
+        // },
+      };
+
+      // By default Unity keeps WebGL canvas render target size matched with
+      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
+      // Set this to false if you want to decouple this synchronization from
+      // happening inside the engine, and you would instead like to size up
+      // the canvas DOM size and WebGL render target sizes yourself.
+      // config.matchWebGLToCanvasSize = false;
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Mobile device style: fill the whole browser client area with the game canvas:
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+      }
+
+
+      loadingBar.style.display = "block";
+
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, window.gamePerformance.unity(config), (progress) => {
+          progressBarFull.style.width = 100 * progress + "%";
+        }).then((unityInstance) => {
+          window.gameAssets.release();
+            loadingBar.style.display = "none";
+          loadingText.remove();parent.postMessage({velocify:"game-ready"},location.origin);
+        }).catch((message) => {
+          alert(message);
+        });
+      };
+      document.body.appendChild(script);
+    })();
+    </script>
+  </body>
+</html>

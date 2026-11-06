@@ -1,0 +1,48 @@
+{
+  "repo": "genizy/web-port",
+  "revision": "a8bea5fd11f88e5a9192857f434e299c40efe7e6",
+  "path": "raft/",
+  "title": "Raft",
+  "kind": "legacy",
+  "executable": "Raft-WEBGL",
+  "assets": {
+    "Build/Raft-WEBGL.asm.code.unityweb": [
+      {
+        "name": "Build/Raft-WEBGL.asm.code.unityweb.part1",
+        "size": 16481013
+      },
+      {
+        "name": "Build/Raft-WEBGL.asm.code.unityweb.part2",
+        "size": 16481012
+      }
+    ],
+    "Build/Raft-WEBGL.asm.framework.unityweb": [
+      {
+        "name": "Build/Raft-WEBGL.asm.framework.unityweb",
+        "size": 450306
+      }
+    ],
+    "Build/Raft-WEBGL.asm.memory.unityweb": [
+      {
+        "name": "Build/Raft-WEBGL.asm.memory.unityweb",
+        "size": 1812017
+      }
+    ],
+    "Build/Raft-WEBGL.data.unityweb": [
+      {
+        "name": "Build/Raft-WEBGL.data.unityweb.part1",
+        "size": 19623432
+      },
+      {
+        "name": "Build/Raft-WEBGL.data.unityweb.part2",
+        "size": 19623432
+      },
+      {
+        "name": "Build/Raft-WEBGL.data.unityweb.part3",
+        "size": 19623430
+      }
+    ]
+  },
+  "remote": {},
+  "configUrl": "Build/Raft-WEBGL.json"
+}

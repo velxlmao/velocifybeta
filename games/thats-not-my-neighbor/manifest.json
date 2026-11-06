@@ -1,0 +1,106 @@
+{
+  "repo": "genizy/web-port",
+  "revision": "a8bea5fd11f88e5a9192857f434e299c40efe7e6",
+  "path": "thats-not-my-neighbor/",
+  "title": "That's Not My Neighbor",
+  "kind": "godot",
+  "executable": "thats-not-my-neighbor",
+  "assets": {
+    "thats-not-my-neighbor.pck": [
+      {
+        "name": "thats-not-my-neighbor.pck.part1",
+        "size": 20546713
+      },
+      {
+        "name": "thats-not-my-neighbor.pck.part2",
+        "size": 20546713
+      },
+      {
+        "name": "thats-not-my-neighbor.pck.part3",
+        "size": 20546713
+      },
+      {
+        "name": "thats-not-my-neighbor.pck.part4",
+        "size": 20546713
+      },
+      {
+        "name": "thats-not-my-neighbor.pck.part5",
+        "size": 20546713
+      },
+      {
+        "name": "thats-not-my-neighbor.pck.part6",
+        "size": 20546713
+      },
+      {
+        "name": "thats-not-my-neighbor.pck.part7",
+        "size": 20546713
+      },
+      {
+        "name": "thats-not-my-neighbor.pck.part8",
+        "size": 20546713
+      },
+      {
+        "name": "thats-not-my-neighbor.pck.part9",
+        "size": 20546713
+      },
+      {
+        "name": "thats-not-my-neighbor.pck.part10",
+        "size": 20546713
+      },
+      {
+        "name": "thats-not-my-neighbor.pck.part11",
+        "size": 20546713
+      },
+      {
+        "name": "thats-not-my-neighbor.pck.part12",
+        "size": 20546713
+      },
+      {
+        "name": "thats-not-my-neighbor.pck.part13",
+        "size": 20546713
+      },
+      {
+        "name": "thats-not-my-neighbor.pck.part14",
+        "size": 20546713
+      },
+      {
+        "name": "thats-not-my-neighbor.pck.part15",
+        "size": 20546713
+      },
+      {
+        "name": "thats-not-my-neighbor.pck.part16",
+        "size": 20546713
+      },
+      {
+        "name": "thats-not-my-neighbor.pck.part17",
+        "size": 20546713
+      },
+      {
+        "name": "thats-not-my-neighbor.pck.part18",
+        "size": 20546713
+      },
+      {
+        "name": "thats-not-my-neighbor.pck.part19",
+        "size": 20546713
+      },
+      {
+        "name": "thats-not-my-neighbor.pck.part20",
+        "size": 20546709
+      }
+    ],
+    "thats-not-my-neighbor.wasm": [
+      {
+        "name": "thats-not-my-neighbor.wasm.part1",
+        "size": 14481421
+      },
+      {
+        "name": "thats-not-my-neighbor.wasm.part2",
+        "size": 14481421
+      },
+      {
+        "name": "thats-not-my-neighbor.wasm.part3",
+        "size": 14481419
+      }
+    ]
+  }
+}

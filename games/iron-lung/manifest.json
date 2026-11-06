@@ -1,0 +1,31 @@
+{
+  "repo": "web-ports/iron-lung",
+  "revision": "609540cad01c7cad3de44271423305c9a57ac2bd",
+  "path": "",
+  "title": "Iron Lung",
+  "kind": "unity",
+  "executable": "built",
+  "assets": {
+    "Build/built.data": [
+      {
+        "name": "Build/built.data.part1",
+        "size": 20866662
+      },
+      {
+        "name": "Build/built.data.part2",
+        "size": 10370873
+      }
+    ],
+    "Build/built.wasm": [
+      {
+        "name": "Build/built.wasm.part1",
+        "size": 20866662
+      },
+      {
+        "name": "Build/built.wasm.part2",
+        "size": 13719143
+      }
+    ]
+  },
+  "runtimeBase": "https://velocify-ports.realdashvr.workers.dev/iron-lung/"
+}

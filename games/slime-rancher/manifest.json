@@ -1,0 +1,8 @@
+{
+  "title": "Slime Rancher",
+  "kind": "legacy",
+  "base": "https://slimeranchers.com/play/",
+  "configUrl": "https://slimeranchers.com/play/Build/slimeBUILDS.json",
+  "assets": {},
+  "nativeSaves": true
+}

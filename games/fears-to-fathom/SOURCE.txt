@@ -1,0 +1,2 @@
+Source: https://github.com/genizy/web-port/tree/f0c801a634fe8e999341703283bb83b3bae4623c/fears-to-fathom/home-alone/
+Game and port credits remain with their authors.

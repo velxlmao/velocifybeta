@@ -1,0 +1,378 @@
+{
+  "repo": "web-ports/tabs",
+  "revision": "f03af105ef2a57a6a7c6ccf1831c95da3327c6f0",
+  "path": "",
+  "title": "Totally Accurate Battle Simulator",
+  "kind": "legacy",
+  "executable": "tabs",
+  "assets": {
+    "Build/tabs.data.unityweb": [
+      {
+        "name": "Build/tabs.data.unityweb.part1",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part2",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part3",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part4",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part5",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part6",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part7",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part8",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part9",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part10",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part11",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part12",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part13",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part14",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part15",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part16",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part17",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part18",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part19",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part20",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part21",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part22",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part23",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part24",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part25",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part26",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part27",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part28",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part29",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part30",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part31",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part32",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part33",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part34",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part35",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part36",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part37",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part38",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part39",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part40",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part41",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part42",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part43",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part44",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part45",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part46",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part47",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part48",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part49",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part50",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part51",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part52",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part53",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part54",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part55",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part56",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part57",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part58",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part59",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part60",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part61",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part62",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part63",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part64",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part65",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part66",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part67",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part68",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part69",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part70",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part71",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part72",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part73",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part74",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part75",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part76",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part77",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part78",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part79",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part80",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part81",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part82",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part83",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part84",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part85",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.data.unityweb.part86",
+        "size": 9728858
+      }
+    ],
+    "Build/tabs.wasm.code.unityweb": [
+      {
+        "name": "Build/tabs.wasm.code.unityweb.part1",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.wasm.code.unityweb.part2",
+        "size": 20866662
+      },
+      {
+        "name": "Build/tabs.wasm.code.unityweb.part3",
+        "size": 5687857
+      }
+    ],
+    "Build/tabs.wasm.framework.unityweb": [
+      {
+        "name": "Build/tabs.wasm.framework.unityweb",
+        "size": 563699
+      }
+    ]
+  },
+  "runtimeBase": "https://velocify-ports.realdashvr.workers.dev/tabs/",
+  "configUrl": "https://velocify-ports.realdashvr.workers.dev/tabs/Build/tabs.json"
+}

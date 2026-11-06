@@ -1,0 +1,485 @@
+{
+  "repo": "genizy/web-port",
+  "revision": "a8bea5fd11f88e5a9192857f434e299c40efe7e6",
+  "path": "amanda-the-adventurer/",
+  "title": "Amanda the Adventurer",
+  "kind": "unity",
+  "executable": "Build",
+  "assets": {
+    "Build/Build.data": [
+      {
+        "name": "Build/Build.data.part1",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part2",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part3",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part4",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part5",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part6",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part7",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part8",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part9",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part10",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part11",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part12",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part13",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part14",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part15",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part16",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part17",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part18",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part19",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part20",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part21",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part22",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part23",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part24",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part25",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part26",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part27",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part28",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part29",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part30",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part31",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part32",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part33",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part34",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part35",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part36",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part37",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part38",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part39",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part40",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part41",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part42",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part43",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part44",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part45",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part46",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part47",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part48",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part49",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part50",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part51",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part52",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part53",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part54",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part55",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part56",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part57",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part58",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part59",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part60",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part61",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part62",
+        "size": 20780237
+      },
+      {
+        "name": "Build/Build.data.part63",
+        "size": 20780203
+      }
+    ],
+    "Build/Build.wasm": [
+      {
+        "name": "Build/Build.wasm.part1",
+        "size": 20287526
+      },
+      {
+        "name": "Build/Build.wasm.part2",
+        "size": 20287526
+      },
+      {
+        "name": "Build/Build.wasm.part3",
+        "size": 20287526
+      },
+      {
+        "name": "Build/Build.wasm.part4",
+        "size": 20287526
+      }
+    ],
+    "gn-math.github.io/Clip_Secret Tape 2.webm": [
+      {
+        "name": "gn-math.github.io/Clip_Secret Tape 2.webm.part1",
+        "size": 15209788
+      },
+      {
+        "name": "gn-math.github.io/Clip_Secret Tape 2.webm.part2",
+        "size": 15209787
+      }
+    ],
+    "gn-math.github.io/Clip_Secret Tape 3.webm": [
+      {
+        "name": "gn-math.github.io/Clip_Secret Tape 3.webm.part1",
+        "size": 19445185
+      },
+      {
+        "name": "gn-math.github.io/Clip_Secret Tape 3.webm.part2",
+        "size": 19445184
+      }
+    ],
+    "gn-math.github.io/Clip_Secret Tape 5.webm": [
+      {
+        "name": "gn-math.github.io/Clip_Secret Tape 5.webm.part1",
+        "size": 18553442
+      },
+      {
+        "name": "gn-math.github.io/Clip_Secret Tape 5.webm.part2",
+        "size": 18553442
+      },
+      {
+        "name": "gn-math.github.io/Clip_Secret Tape 5.webm.part3",
+        "size": 18553442
+      }
+    ],
+    "gn-math.github.io/Clip_Secret Tape 6.webm": [
+      {
+        "name": "gn-math.github.io/Clip_Secret Tape 6.webm.part1",
+        "size": 15983322
+      },
+      {
+        "name": "gn-math.github.io/Clip_Secret Tape 6.webm.part2",
+        "size": 15983322
+      }
+    ]
+  },
+  "remote": {
+    "StreamingAssets/Master.bank": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/StreamingAssets/Master.bank",
+    "StreamingAssets/Master.strings.bank": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/StreamingAssets/Master.strings.bank",
+    "gn-math.github.io/Clip_Blabbotcode.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_Blabbotcode.webm",
+    "gn-math.github.io/Clip_E1S1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E1S1.webm",
+    "gn-math.github.io/Clip_E1S2A.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E1S2A.webm",
+    "gn-math.github.io/Clip_E1S2F.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E1S2F.webm",
+    "gn-math.github.io/Clip_E1S2b.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E1S2b.webm",
+    "gn-math.github.io/Clip_E1S3.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E1S3.webm",
+    "gn-math.github.io/Clip_E1S3B.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E1S3B.webm",
+    "gn-math.github.io/Clip_E1S3F1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E1S3F1.webm",
+    "gn-math.github.io/Clip_E1S3F2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E1S3F2.webm",
+    "gn-math.github.io/Clip_E1S3F3.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E1S3F3.webm",
+    "gn-math.github.io/Clip_E1S4.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E1S4.webm",
+    "gn-math.github.io/Clip_E2AS1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2AS1.webm",
+    "gn-math.github.io/Clip_E2AS1F1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2AS1F1.webm",
+    "gn-math.github.io/Clip_E2AS1F2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2AS1F2.webm",
+    "gn-math.github.io/Clip_E2AS1F3.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2AS1F3.webm",
+    "gn-math.github.io/Clip_E2AS2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2AS2.webm",
+    "gn-math.github.io/Clip_E2AS2F1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2AS2F1.webm",
+    "gn-math.github.io/Clip_E2AS2F2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2AS2F2.webm",
+    "gn-math.github.io/Clip_E2AS2F3.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2AS2F3.webm",
+    "gn-math.github.io/Clip_E2AS3.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2AS3.webm",
+    "gn-math.github.io/Clip_E2AS3B.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2AS3B.webm",
+    "gn-math.github.io/Clip_E2AS3F1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2AS3F1.webm",
+    "gn-math.github.io/Clip_E2AS3F2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2AS3F2.webm",
+    "gn-math.github.io/Clip_E2AS4.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2AS4.webm",
+    "gn-math.github.io/Clip_E2AS4F1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2AS4F1.webm",
+    "gn-math.github.io/Clip_E2AS4F2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2AS4F2.webm",
+    "gn-math.github.io/Clip_E2AS4F3.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2AS4F3.webm",
+    "gn-math.github.io/Clip_E2AS5.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2AS5.webm",
+    "gn-math.github.io/Clip_E2AS5F1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2AS5F1.webm",
+    "gn-math.github.io/Clip_E2AS5F2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2AS5F2.webm",
+    "gn-math.github.io/Clip_E2AS6.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2AS6.webm",
+    "gn-math.github.io/Clip_E2BS1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2BS1.webm",
+    "gn-math.github.io/Clip_E2BS1F1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2BS1F1.webm",
+    "gn-math.github.io/Clip_E2BS1F2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2BS1F2.webm",
+    "gn-math.github.io/Clip_E2BS1F3.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2BS1F3.webm",
+    "gn-math.github.io/Clip_E2BS1F4.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2BS1F4.webm",
+    "gn-math.github.io/Clip_E2BS2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2BS2.webm",
+    "gn-math.github.io/Clip_E2BS2F1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2BS2F1.webm",
+    "gn-math.github.io/Clip_E2BS2F2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2BS2F2.webm",
+    "gn-math.github.io/Clip_E2BS3.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2BS3.webm",
+    "gn-math.github.io/Clip_E2BS3F1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2BS3F1.webm",
+    "gn-math.github.io/Clip_E2BS3F2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2BS3F2.webm",
+    "gn-math.github.io/Clip_E2BS3F3.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2BS3F3.webm",
+    "gn-math.github.io/Clip_E2BS4.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2BS4.webm",
+    "gn-math.github.io/Clip_E2BS4S1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2BS4S1.webm",
+    "gn-math.github.io/Clip_E2BS4S2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2BS4S2.webm",
+    "gn-math.github.io/Clip_E2BS4S3.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2BS4S3.webm",
+    "gn-math.github.io/Clip_E2BS4S4.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2BS4S4.webm",
+    "gn-math.github.io/Clip_E2BS5.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2BS5.webm",
+    "gn-math.github.io/Clip_E2BS5F1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2BS5F1.webm",
+    "gn-math.github.io/Clip_E2BS5F2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2BS5F2.webm",
+    "gn-math.github.io/Clip_E2BS5F3.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2BS5F3.webm",
+    "gn-math.github.io/Clip_E2BS6.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2BS6.webm",
+    "gn-math.github.io/Clip_E2BS6F1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2BS6F1.webm",
+    "gn-math.github.io/Clip_E2BS6F2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2BS6F2.webm",
+    "gn-math.github.io/Clip_E2BS6F3.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2BS6F3.webm",
+    "gn-math.github.io/Clip_E2BS7.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2BS7.webm",
+    "gn-math.github.io/Clip_E2bs2f3.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E2bs2f3.webm",
+    "gn-math.github.io/Clip_E3AS1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E3AS1.webm",
+    "gn-math.github.io/Clip_E3AS1F1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E3AS1F1.webm",
+    "gn-math.github.io/Clip_E3AS1F2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E3AS1F2.webm",
+    "gn-math.github.io/Clip_E3AS2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E3AS2.webm",
+    "gn-math.github.io/Clip_E3AS2F1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E3AS2F1.webm",
+    "gn-math.github.io/Clip_E3AS2F2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E3AS2F2.webm",
+    "gn-math.github.io/Clip_E3AS2F3.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E3AS2F3.webm",
+    "gn-math.github.io/Clip_E3AS3.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E3AS3.webm",
+    "gn-math.github.io/Clip_E3AS3F1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E3AS3F1.webm",
+    "gn-math.github.io/Clip_E3AS3F2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E3AS3F2.webm",
+    "gn-math.github.io/Clip_E3AS3F3.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E3AS3F3.webm",
+    "gn-math.github.io/Clip_E3AS3b.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E3AS3b.webm",
+    "gn-math.github.io/Clip_E3AS4.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E3AS4.webm",
+    "gn-math.github.io/Clip_E3AS4F1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E3AS4F1.webm",
+    "gn-math.github.io/Clip_E3AS4F2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E3AS4F2.webm",
+    "gn-math.github.io/Clip_E3AS4F3.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E3AS4F3.webm",
+    "gn-math.github.io/Clip_E3AS5.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E3AS5.webm",
+    "gn-math.github.io/Clip_E3BS1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E3BS1.webm",
+    "gn-math.github.io/Clip_E3BS2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E3BS2.webm",
+    "gn-math.github.io/Clip_E3BS2F1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E3BS2F1.webm",
+    "gn-math.github.io/Clip_E3BS2F2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E3BS2F2.webm",
+    "gn-math.github.io/Clip_E3BS2F3.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E3BS2F3.webm",
+    "gn-math.github.io/Clip_E3BS2F4.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E3BS2F4.webm",
+    "gn-math.github.io/Clip_E3BS3.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E3BS3.webm",
+    "gn-math.github.io/Clip_E3BS3F1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E3BS3F1.webm",
+    "gn-math.github.io/Clip_E3BS3F2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E3BS3F2.webm",
+    "gn-math.github.io/Clip_E3BS3F3.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E3BS3F3.webm",
+    "gn-math.github.io/Clip_E3BS4.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E3BS4.webm",
+    "gn-math.github.io/Clip_E3BS5A.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E3BS5A.webm",
+    "gn-math.github.io/Clip_E3BS5B.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E3BS5B.webm",
+    "gn-math.github.io/Clip_E4BEnd.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E4BEnd.webm",
+    "gn-math.github.io/Clip_E4BS1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E4BS1.webm",
+    "gn-math.github.io/Clip_E4BS2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E4BS2.webm",
+    "gn-math.github.io/Clip_E4BS3.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E4BS3.webm",
+    "gn-math.github.io/Clip_E4S1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E4S1.webm",
+    "gn-math.github.io/Clip_E4S1F1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E4S1F1.webm",
+    "gn-math.github.io/Clip_E4S1F2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E4S1F2.webm",
+    "gn-math.github.io/Clip_E4S1F3.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E4S1F3.webm",
+    "gn-math.github.io/Clip_E4S2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E4S2.webm",
+    "gn-math.github.io/Clip_E4S2F1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E4S2F1.webm",
+    "gn-math.github.io/Clip_E4S2F2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E4S2F2.webm",
+    "gn-math.github.io/Clip_E4S2F3.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E4S2F3.webm",
+    "gn-math.github.io/Clip_E4S3.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E4S3.webm",
+    "gn-math.github.io/Clip_E4S3F1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E4S3F1.webm",
+    "gn-math.github.io/Clip_E4S3F2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E4S3F2.webm",
+    "gn-math.github.io/Clip_E4S3F3.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E4S3F3.webm",
+    "gn-math.github.io/Clip_E4S3bF1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E4S3bF1.webm",
+    "gn-math.github.io/Clip_E4S3bS.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E4S3bS.webm",
+    "gn-math.github.io/Clip_E4S4.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E4S4.webm",
+    "gn-math.github.io/Clip_E4S4F1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E4S4F1.webm",
+    "gn-math.github.io/Clip_E4S4F2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E4S4F2.webm",
+    "gn-math.github.io/Clip_E4S4F3.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E4S4F3.webm",
+    "gn-math.github.io/Clip_E4S4S1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E4S4S1.webm",
+    "gn-math.github.io/Clip_E4S4S2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E4S4S2.webm",
+    "gn-math.github.io/Clip_E4S4S3.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E4S4S3.webm",
+    "gn-math.github.io/Clip_E5S1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E5S1.webm",
+    "gn-math.github.io/Clip_E5S1F1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E5S1F1.webm",
+    "gn-math.github.io/Clip_E5S1F2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E5S1F2.webm",
+    "gn-math.github.io/Clip_E5S1F3.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E5S1F3.webm",
+    "gn-math.github.io/Clip_E5S2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E5S2.webm",
+    "gn-math.github.io/Clip_E5S2F1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E5S2F1.webm",
+    "gn-math.github.io/Clip_E5S2F2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E5S2F2.webm",
+    "gn-math.github.io/Clip_E5S3A.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E5S3A.webm",
+    "gn-math.github.io/Clip_E5S3B.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E5S3B.webm",
+    "gn-math.github.io/Clip_E5S3F1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E5S3F1.webm",
+    "gn-math.github.io/Clip_E5S3F2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E5S3F2.webm",
+    "gn-math.github.io/Clip_E5S3F3.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E5S3F3.webm",
+    "gn-math.github.io/Clip_E5S4.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E5S4.webm",
+    "gn-math.github.io/Clip_E5S4F1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E5S4F1.webm",
+    "gn-math.github.io/Clip_E5S4F2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E5S4F2.webm",
+    "gn-math.github.io/Clip_E5S5.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E5S5.webm",
+    "gn-math.github.io/Clip_E5S5F1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E5S5F1.webm",
+    "gn-math.github.io/Clip_E5S5F2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E5S5F2.webm",
+    "gn-math.github.io/Clip_E5S5F3.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E5S5F3.webm",
+    "gn-math.github.io/Clip_E5S6.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E5S6.webm",
+    "gn-math.github.io/Clip_E6S1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E6S1.webm",
+    "gn-math.github.io/Clip_E6S2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E6S2.webm",
+    "gn-math.github.io/Clip_E6S2F1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E6S2F1.webm",
+    "gn-math.github.io/Clip_E6S2S1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E6S2S1.webm",
+    "gn-math.github.io/Clip_E6S2S2.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E6S2S2.webm",
+    "gn-math.github.io/Clip_E6S2S3.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_E6S2S3.webm",
+    "gn-math.github.io/Clip_EndingLoop.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_EndingLoop.webm",
+    "gn-math.github.io/Clip_Secret Tape 1.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_Secret%20Tape%201.webm",
+    "gn-math.github.io/Clip_Secret Tape 4.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_Secret%20Tape%204.webm",
+    "gn-math.github.io/Clip_Trapdoor.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_Trapdoor.webm",
+    "gn-math.github.io/Clip_Wardrobecode.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Clip_Wardrobecode.webm",
+    "gn-math.github.io/Loopingbluescreen.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Loopingbluescreen.webm",
+    "gn-math.github.io/Maintitlevideo.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Maintitlevideo.webm",
+    "gn-math.github.io/Raintexture.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Raintexture.webm",
+    "gn-math.github.io/Raintosun.webm": "https://raw.githubusercontent.com/genizy/web-port/a8bea5fd11f88e5a9192857f434e299c40efe7e6/amanda-the-adventurer/gn-math.github.io/Raintosun.webm"
+  },
+  "textAssets": [
+    "gn-math.github.io/Clip_Secret Tape 2.webm",
+    "gn-math.github.io/Clip_Secret Tape 3.webm",
+    "gn-math.github.io/Clip_Secret Tape 5.webm",
+    "gn-math.github.io/Clip_Secret Tape 6.webm"
+  ],
+  "runtimeBase": "https://velocify-ports.realdashvr.workers.dev/amanda-the-adventurer/"
+}

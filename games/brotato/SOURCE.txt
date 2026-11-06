@@ -1,0 +1,4 @@
+Web port: https://github.com/degloved-net/brotato-web
+Release: https://github.com/degloved-net/brotato-web/releases/tag/0
+Game: Brotato by Blobfish
+Local change: notify parent when engine is ready.

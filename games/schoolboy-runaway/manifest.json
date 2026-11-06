@@ -1,0 +1,79 @@
+{
+  "repo": "genizy/web-port",
+  "revision": "a8bea5fd11f88e5a9192857f434e299c40efe7e6",
+  "path": "schoolboy-runaway/",
+  "title": "Schoolboy Runaway",
+  "kind": "unity",
+  "executable": "schoolboy-runaway",
+  "assets": {
+    "Build/schoolboy-runaway.data": [
+      {
+        "name": "Build/schoolboy-runaway.data.part1",
+        "size": 20866662
+      },
+      {
+        "name": "Build/schoolboy-runaway.data.part2",
+        "size": 20866662
+      },
+      {
+        "name": "Build/schoolboy-runaway.data.part3",
+        "size": 20866662
+      },
+      {
+        "name": "Build/schoolboy-runaway.data.part4",
+        "size": 20866662
+      },
+      {
+        "name": "Build/schoolboy-runaway.data.part5",
+        "size": 20866662
+      },
+      {
+        "name": "Build/schoolboy-runaway.data.part6",
+        "size": 20866662
+      },
+      {
+        "name": "Build/schoolboy-runaway.data.part7",
+        "size": 20866662
+      },
+      {
+        "name": "Build/schoolboy-runaway.data.part8",
+        "size": 20866662
+      },
+      {
+        "name": "Build/schoolboy-runaway.data.part9",
+        "size": 20866662
+      },
+      {
+        "name": "Build/schoolboy-runaway.data.part10",
+        "size": 20866662
+      },
+      {
+        "name": "Build/schoolboy-runaway.data.part11",
+        "size": 20866662
+      },
+      {
+        "name": "Build/schoolboy-runaway.data.part12",
+        "size": 20866662
+      },
+      {
+        "name": "Build/schoolboy-runaway.data.part13",
+        "size": 20866662
+      },
+      {
+        "name": "Build/schoolboy-runaway.data.part14",
+        "size": 11059550
+      }
+    ],
+    "Build/schoolboy-runaway.wasm": [
+      {
+        "name": "Build/schoolboy-runaway.wasm.part1",
+        "size": 20866662
+      },
+      {
+        "name": "Build/schoolboy-runaway.wasm.part2",
+        "size": 12452580
+      }
+    ]
+  },
+  "runtimeBase": "https://velocify-ports.realdashvr.workers.dev/schoolboy-runaway/"
+}

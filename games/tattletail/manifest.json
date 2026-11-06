@@ -1,0 +1,42 @@
+{
+  "repo": "genizy/web-port",
+  "revision": "a8bea5fd11f88e5a9192857f434e299c40efe7e6",
+  "path": "tattletail/",
+  "title": "Tattletail",
+  "kind": "legacy",
+  "executable": "WebGL",
+  "assets": {
+    "Build/WebGL.data.unityweb": [
+      {
+        "name": "Build/WebGL.data.unityweb.part1",
+        "size": 20866662
+      },
+      {
+        "name": "Build/WebGL.data.unityweb.part2",
+        "size": 20866662
+      },
+      {
+        "name": "Build/WebGL.data.unityweb.part3",
+        "size": 20866662
+      },
+      {
+        "name": "Build/WebGL.data.unityweb.part4",
+        "size": 1649000
+      }
+    ],
+    "Build/WebGL.wasm.code.unityweb": [
+      {
+        "name": "Build/WebGL.wasm.code.unityweb",
+        "size": 5586058
+      }
+    ],
+    "Build/WebGL.wasm.framework.unityweb": [
+      {
+        "name": "Build/WebGL.wasm.framework.unityweb",
+        "size": 94717
+      }
+    ]
+  },
+  "runtimeBase": "https://velocify-ports.realdashvr.workers.dev/tattletail/",
+  "configUrl": "https://velocify-ports.realdashvr.workers.dev/tattletail/Build/WebGL.json"
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+<script src="../performance.js"></script>
+<script src="../game-assets.js"></script>
+<script>window.gameDownloadSizes={"20minutes.data.part1":20866662,"20minutes.data.part2":10052265,"20minutes.wasm.part1":20866662,"20minutes.wasm.part2":5864515};</script>
+<script src="../download-progress.js"></script>
+    <script src="../browser-saves.js"></script>
+    <base href="https://cdn.jsdelivr.net/gh/web-ports/20-minutes@e82366ecffd3ed46f804da050d02a44422986204/">
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity Web Player | 20 Minutes Till Dawn</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <style>
+:root { --game-bg: #121E1E; }
+body { background: var(--game-bg); overflow: hidden; }
+#unity-container { inset: 0; display: grid; place-items: center; }
+#unity-canvas { width: min(100vw, 160vh); height: min(62.5vw, 100vh); }
+
+      
+#loading-text {
+  font-weight: bold;
+  background: linear-gradient(
+    270deg,
+    #ff0000,
+    #ff7f00,
+    #ffff00,
+    #00ff00,
+    #0000ff,
+    #4b0082,
+    #8f00ff
+  );
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbow 3s ease infinite;
+}
+
+@keyframes rainbow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+    </style>
+  </head>
+  <body>
+    <div id="loading-text"
+    style="color: white; font-size: 48px; font-family: cursive; text-align: center; margin-top: 20px;"> LOADING...
+  </div>
+    <div id="unity-container">
+      <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
+      <div id="unity-loading-bar">
+        <div id="unity-logo"></div>
+        <div id="unity-progress-bar-empty">
+          <div id="unity-progress-bar-full"></div>
+        </div>
+      </div>
+      <div id="unity-warning"> </div>
+    </div>
+    <script>
+
+var loadingText = document.querySelector("#loading-text");
+    let totalBytes = 0;
+    let loadedBytes = 0;
+
+    async function mergeFiles(paths) { return (await window.gameAssets.fromPaths(paths)).url; }
+
+    function getParts(file, start, end) {
+      let parts = [];
+      for (let i = start; i <= end; i++) {
+        parts.push(file + ".part" + i);
+      }
+      return parts;
+    }
+    (async () => {
+      const [dataUrl, wasmUrl] = await Promise.all([
+        mergeFiles(getParts("Build/20minutes.data", 1, 2), "20minutes.data"),
+        mergeFiles(getParts("Build/20minutes.wasm", 1, 2), "20minutes.wasm"),
+      ]);
+      var container = document.querySelector("#unity-container");
+      var canvas = document.querySelector("#unity-canvas");
+      var loadingBar = document.querySelector("#unity-loading-bar");
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+      var warningBanner = document.querySelector("#unity-warning");
+
+      function unityShowBanner(msg, type) {
+
+      }
+
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/20minutes.loader.js";
+      const saveFramework = new URL("framework.js", location.href).href;
+      var config = {
+        arguments: [],
+        dataUrl: dataUrl,
+        frameworkUrl: saveFramework,
+        codeUrl: wasmUrl,
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "Flanne",
+        productName: "MinutesTillDawn",
+        productVersion: "0.6.6",
+        showBanner: unityShowBanner,
+      };
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+      }
+
+
+      loadingBar.style.display = "block";
+
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, window.gamePerformance.unity(config), (progress) => {
+          progressBarFull.style.width = 100 * progress + "%";
+        }).then((unityInstance) => {
+          window.gameAssets.release();
+            loadingBar.style.display = "none";
+          loadingText.remove();
+          parent.postMessage({ velocify: "game-ready" }, location.origin);
+        }).catch((message) => {
+          alert(message);
+        });
+      };
+      document.body.appendChild(script);
+    })();
+    </script>
+  </body>
+</html>

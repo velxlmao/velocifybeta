@@ -1,0 +1,2 @@
+https://github.com/UnknownShadow200/ClassiCube
+https://cdn.classicube.net/client/latest/ClassiCube.js

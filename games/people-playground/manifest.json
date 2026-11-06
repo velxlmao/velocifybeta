@@ -1,0 +1,51 @@
+{
+  "repo": "genizy/web-port",
+  "revision": "a8bea5fd11f88e5a9192857f434e299c40efe7e6",
+  "path": "people-playground/",
+  "title": "People Playground",
+  "kind": "unity",
+  "executable": "PPG",
+  "assets": {
+    "Build/PPG.data": [
+      {
+        "name": "Build/PPG.data.part1",
+        "size": 18814925
+      },
+      {
+        "name": "Build/PPG.data.part2",
+        "size": 18814925
+      },
+      {
+        "name": "Build/PPG.data.part3",
+        "size": 18814925
+      },
+      {
+        "name": "Build/PPG.data.part4",
+        "size": 18814925
+      },
+      {
+        "name": "Build/PPG.data.part5",
+        "size": 18814925
+      },
+      {
+        "name": "Build/PPG.data.part6",
+        "size": 18814923
+      }
+    ],
+    "Build/PPG.wasm": [
+      {
+        "name": "Build/PPG.wasm.part1",
+        "size": 16957061
+      },
+      {
+        "name": "Build/PPG.wasm.part2",
+        "size": 16957061
+      },
+      {
+        "name": "Build/PPG.wasm.part3",
+        "size": 16957061
+      }
+    ]
+  },
+  "runtimeBase": "https://velocify-ports.realdashvr.workers.dev/people-playground/"
+}

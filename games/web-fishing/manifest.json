@@ -1,0 +1,30 @@
+{
+  "repo": "genizy/web-port",
+  "revision": "a8bea5fd11f88e5a9192857f434e299c40efe7e6",
+  "path": "web-fishing/",
+  "title": "WEBFISHING",
+  "kind": "godot",
+  "executable": "webfishing",
+  "assets": {
+    "webfishing.pck": [
+      {
+        "name": "webfishing.pck.part1",
+        "size": 15316155
+      },
+      {
+        "name": "webfishing.pck.part2",
+        "size": 15316155
+      },
+      {
+        "name": "webfishing.pck.part3",
+        "size": 15316154
+      }
+    ],
+    "webfishing.wasm": [
+      {
+        "name": "webfishing.wasm",
+        "size": 17860295
+      }
+    ]
+  }
+}

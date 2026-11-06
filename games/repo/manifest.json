@@ -1,0 +1,91 @@
+{
+  "repo": "genizy/web-port",
+  "revision": "a8bea5fd11f88e5a9192857f434e299c40efe7e6",
+  "path": "repo/",
+  "title": "R.E.P.O.",
+  "kind": "unity",
+  "executable": "NewestBuild",
+  "assets": {
+    "Build/NewestBuild.data.gz": [
+      {
+        "name": "Build/NewestBuild.data.gz.part1",
+        "size": 20278857
+      },
+      {
+        "name": "Build/NewestBuild.data.gz.part2",
+        "size": 20278857
+      },
+      {
+        "name": "Build/NewestBuild.data.gz.part3",
+        "size": 20278857
+      },
+      {
+        "name": "Build/NewestBuild.data.gz.part4",
+        "size": 20278857
+      },
+      {
+        "name": "Build/NewestBuild.data.gz.part5",
+        "size": 20278857
+      },
+      {
+        "name": "Build/NewestBuild.data.gz.part6",
+        "size": 20278857
+      },
+      {
+        "name": "Build/NewestBuild.data.gz.part7",
+        "size": 20278857
+      },
+      {
+        "name": "Build/NewestBuild.data.gz.part8",
+        "size": 20278857
+      },
+      {
+        "name": "Build/NewestBuild.data.gz.part9",
+        "size": 20278857
+      },
+      {
+        "name": "Build/NewestBuild.data.gz.part10",
+        "size": 20278857
+      },
+      {
+        "name": "Build/NewestBuild.data.gz.part11",
+        "size": 20278857
+      },
+      {
+        "name": "Build/NewestBuild.data.gz.part12",
+        "size": 20278857
+      },
+      {
+        "name": "Build/NewestBuild.data.gz.part13",
+        "size": 20278857
+      },
+      {
+        "name": "Build/NewestBuild.data.gz.part14",
+        "size": 20278857
+      },
+      {
+        "name": "Build/NewestBuild.data.gz.part15",
+        "size": 20278857
+      },
+      {
+        "name": "Build/NewestBuild.data.gz.part16",
+        "size": 20278852
+      }
+    ],
+    "Build/NewestBuild.wasm.gz": [
+      {
+        "name": "Build/NewestBuild.wasm.gz.part1",
+        "size": 14601093
+      },
+      {
+        "name": "Build/NewestBuild.wasm.gz.part2",
+        "size": 14601093
+      },
+      {
+        "name": "Build/NewestBuild.wasm.gz.part3",
+        "size": 14601091
+      }
+    ]
+  },
+  "runtimeBase": "https://velocify-ports.realdashvr.workers.dev/repo/"
+}

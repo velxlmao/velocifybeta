@@ -1,0 +1,2 @@
+Source: https://github.com/web-ports/hollow-knight/tree/1b7d1e452f66268486e9a000a6006b4e8eb527bc/
+Game and port credits remain with their authors.

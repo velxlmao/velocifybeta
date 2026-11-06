@@ -1,0 +1,54 @@
+{
+  "repo": "genizy/web-port",
+  "revision": "a8bea5fd11f88e5a9192857f434e299c40efe7e6",
+  "path": "bendy/",
+  "title": "Bendy and the Ink Machine",
+  "kind": "legacy",
+  "executable": "BATIM",
+  "assets": {
+    "Build/BATIM.data.unityweb": [
+      {
+        "name": "Build/BATIM.data.unityweb.part1",
+        "size": 18530214
+      },
+      {
+        "name": "Build/BATIM.data.unityweb.part2",
+        "size": 18530214
+      },
+      {
+        "name": "Build/BATIM.data.unityweb.part3",
+        "size": 18530214
+      },
+      {
+        "name": "Build/BATIM.data.unityweb.part4",
+        "size": 18530214
+      },
+      {
+        "name": "Build/BATIM.data.unityweb.part5",
+        "size": 18530214
+      },
+      {
+        "name": "Build/BATIM.data.unityweb.part6",
+        "size": 18530214
+      },
+      {
+        "name": "Build/BATIM.data.unityweb.part7",
+        "size": 18530212
+      }
+    ],
+    "Build/BATIM.wasm.code.unityweb": [
+      {
+        "name": "Build/BATIM.wasm.code.unityweb",
+        "size": 5832353
+      }
+    ],
+    "Build/BATIM.wasm.framework.unityweb": [
+      {
+        "name": "Build/BATIM.wasm.framework.unityweb",
+        "size": 87434
+      }
+    ]
+  },
+  "remote": {},
+  "configUrl": "Build/BATIM.json"
+}

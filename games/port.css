@@ -1,0 +1,11 @@
+:root { --bg: #0f1216; --text: #d7dce3; --border: #2a313b; --accent: #6f96c9; }
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: var(--bg); color: var(--text); font: 14px system-ui,sans-serif; }
+#unityContainer, #game-canvas { display: block; width: 100%; height: 100%; }
+#port-loading { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 28px; background: var(--bg); text-align: center; }
+#port-status { overflow-wrap: anywhere; }
+button { border: 1px solid var(--border); border-radius: 6px; padding: 14px 28px; background: var(--bg); color: var(--text); font: inherit; cursor: pointer; }
+button:hover { border-color: var(--accent); }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+button:disabled { opacity: .5; cursor: default; }
+[hidden] { display: none !important; }

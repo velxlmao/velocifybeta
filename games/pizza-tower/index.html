@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pizza Tower</title><link rel="stylesheet" href="../port.css"><style>#canvas{display:block;width:100%;height:100%}</style><script src="../performance.js"></script><script src="../game-assets.js"></script><script src="../browser-saves.js"></script><script src="../download-progress.js"></script><script src="../steam-ports.js" defer></script></head><body>
+    <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex="-1">
+    </canvas>
+    <div id="pauseMenuContainer" hidden>
+        <div id="pauseMenuBorder">
+            <div id="pauseMenu">
+                <button id="resumeButton" onclick="resume()"> Resume </button>
+                <button id="quitButton" onclick="quitIfSupported()"> Quit </button>
+            </div>
+        </div>
+    </div>
+    <div class="loading">
+        <div class="spinner" id="spinner"></div>
+        <div class="emscripten" id="status">Downloading...</div>
+        <progress value="0" max="100" id="progress" hidden="1"></progress>
+    </div>
+    <div class="output-container" id="output-container">
+        <div id="message-container">
+            <div id="messages">
+            </div>
+        </div>
+              
+<div id="port-loading"><p id="port-status" role="status">preparing game…</p><button id="port-retry" hidden>retry</button></div></body></html>
