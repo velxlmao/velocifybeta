@@ -517,6 +517,9 @@
 	maximizeButton.addEventListener("click", toggleMaximize);
 	closeButton.addEventListener("click", close);
 	modalClose.addEventListener("click", () => { modal.hidden = true; });
+	document.addEventListener("velocord:uninstall", () => {
+		if (open) close();
+	});
 	makeDraggable(windowElement, titlebar);
 	showOnboarding();
 })();
