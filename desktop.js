@@ -217,6 +217,12 @@ async function connectProxy(url, signal) {
 	await serviceReady;
 	signal.throwIfAborted();
 }
+async function warmProxy() {
+	try {
+		await connectProxy("https://example.com/", new AbortController().signal);
+		if (!browserOpen) setStatus("");
+	} catch {}
+}
 async function navigate(value) {
 	if (!value.trim()) return;
 	showBrowser();
@@ -267,3 +273,4 @@ makeDraggable(browserWindow, browserTitlebar);
 createTab();
 updateClock();
 setInterval(updateClock, 1000);
+warmProxy();
