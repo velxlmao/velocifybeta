@@ -47,6 +47,7 @@ export class Velocord {
 		Object.assign(user, { displayName, username, avatar });
 		await this.state.storage.put({ ["user:" + user.id]: user, ["username:" + username]: user.id, ["token:" + token]: user.id });
 		await this.joinOfficial(user.id);
+		await this.joinPublicGroup(user.id);
 		this.notifyAll();
 		return json({ token, user: this.publicUser(user) });
 	}
@@ -77,10 +78,22 @@ export class Velocord {
 		if (!server.members.includes(userId)) server.members.push(userId);
 		await this.state.storage.put("server:" + server.id, server);
 	}
+	async joinPublicGroup(userId) {
+		let id = await this.state.storage.get("public-group");
+		let group = id && await this.state.storage.get("group:" + id);
+		if (!group) {
+			group = { id: crypto.randomUUID(), name: "public velocify", ownerId: await this.state.storage.get("username:velx") || "", members: [], messages: [], createdAt: Date.now(), official: true };
+			await this.state.storage.put("public-group", group.id);
+		}
+		if (!group.ownerId) group.ownerId = await this.state.storage.get("username:velx") || "";
+		if (!group.members.includes(userId)) group.members.push(userId);
+		await this.state.storage.put("group:" + group.id, group);
+	}
 	async snapshot(token) {
 		const user = await this.userFromToken(token);
 		if (!user) return json({ error: "unauthorized" }, 401);
 		await this.joinOfficial(user.id);
+		await this.joinPublicGroup(user.id);
 		const users = await this.all("user:");
 		const userMap = new Map(users.map((item) => [item.id, item]));
 		const servers = (await this.all("server:")).filter((server) => server.members.includes(user.id));
