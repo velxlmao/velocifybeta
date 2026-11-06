@@ -1,0 +1,10 @@
+name = "velocify-beta-messages"
+main = "../velocord-worker/index.js"
+compatibility_date = "2026-11-06"
+
+[durable_objects]
+bindings = [{ name = "VELOCORD", class_name = "Velocord" }]
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["Velocord"]

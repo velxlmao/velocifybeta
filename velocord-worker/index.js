@@ -84,6 +84,7 @@ export class Velocord {
 		const users = await this.all("user:");
 		const userMap = new Map(users.map((item) => [item.id, item]));
 		const servers = (await this.all("server:")).filter((server) => server.members.includes(user.id));
+		const groups = (await this.all("group:")).filter((group) => group.members.includes(user.id)).map((group) => ({ ...group, memberUsers: group.members.map((id) => userMap.get(id)).filter(Boolean).map((item) => this.publicUser(item)) }));
 		const dms = {};
 		for (const friendId of user.friends) dms[friendId] = await this.state.storage.get("dm:" + pair(user.id, friendId)) || [];
 		return json({
@@ -91,6 +92,7 @@ export class Velocord {
 			friends: user.friends.map((id) => userMap.get(id)).filter(Boolean).map((item) => this.publicUser(item)),
 			requests: user.requests.map((id) => userMap.get(id)).filter(Boolean).map((item) => this.publicUser(item)),
 			servers,
+			groups,
 			dms,
 		});
 	}
@@ -104,6 +106,13 @@ export class Velocord {
 			const target = await this.state.storage.get("user:" + id);
 			if (!target.requests.includes(user.id) && !target.friends.includes(user.id)) target.requests.push(user.id);
 			await this.state.storage.put("user:" + id, target);
+		} else if (type === "contact_add") {
+			const id = await this.state.storage.get("username:" + clean(body.username, 24).toLowerCase().replace(/^@/, ""));
+			if (!id || id === user.id) return json({ error: "user not found" }, 404);
+			const contact = await this.state.storage.get("user:" + id);
+			if (!user.friends.includes(id)) user.friends.push(id);
+			if (!contact.friends.includes(user.id)) contact.friends.push(user.id);
+			await this.state.storage.put({ ["user:" + user.id]: user, ["user:" + id]: contact });
 		} else if (type === "friend_accept") {
 			const id = clean(body.userId, 64);
 			if (!user.requests.includes(id)) return json({ error: "request not found" }, 404);
@@ -134,6 +143,30 @@ export class Velocord {
 			const duplicate = (await this.all("server:")).some((item) => item.code === server.code);
 			if (duplicate) return json({ error: "code already used" }, 409);
 			await this.state.storage.put("server:" + server.id, server);
+		} else if (type === "group_create") {
+			const usernames = Array.isArray(body.usernames) ? body.usernames : [];
+			const members = [user.id];
+			for (const username of usernames.slice(0, 24)) {
+				const id = await this.state.storage.get("username:" + clean(username, 24).toLowerCase().replace(/^@/, ""));
+				if (id && !members.includes(id)) members.push(id);
+			}
+			if (members.length < 2) return json({ error: "add at least one valid username" }, 400);
+			const group = { id: crypto.randomUUID(), name: clean(body.name, 40) || "new group", ownerId: user.id, members, messages: [], createdAt: Date.now() };
+			await this.state.storage.put("group:" + group.id, group);
+		} else if (type === "group_send") {
+			const group = await this.state.storage.get("group:" + body.groupId);
+			if (!group || !group.members.includes(user.id)) return json({ error: "forbidden" }, 403);
+			group.messages.push({ id: crypto.randomUUID(), authorId: user.id, author: this.publicUser(user), text: clean(body.text, 2000), at: Date.now() });
+			group.messages = group.messages.slice(-200);
+			await this.state.storage.put("group:" + group.id, group);
+		} else if (type === "group_edit" || type === "group_delete") {
+			const group = await this.state.storage.get("group:" + body.groupId);
+			if (!group || !group.members.includes(user.id)) return json({ error: "forbidden" }, 403);
+			const message = group.messages.find((item) => item.id === body.messageId);
+			if (!message || (type === "group_edit" && message.authorId !== user.id) || (type === "group_delete" && message.authorId !== user.id && group.ownerId !== user.id)) return json({ error: "forbidden" }, 403);
+			if (type === "group_edit") Object.assign(message, { text: clean(body.text, 2000), editedAt: Date.now() });
+			else group.messages.splice(group.messages.indexOf(message), 1);
+			await this.state.storage.put("group:" + group.id, group);
 		} else if (type === "server_join") {
 			const wanted = clean(body.code, 16).toUpperCase();
 			const server = (await this.all("server:")).find((item) => item.code === wanted);
