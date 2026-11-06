@@ -32,6 +32,10 @@ let browserAnimation;
 let tabId = 0;
 let activeTabId;
 let tabs = [];
+let runtimeReady;
+let serviceReady;
+let activeService;
+const serviceKey = "velocify-v2-service";
 const { ScramjetController } = $scramjetLoadController();
 const scramjet = new ScramjetController({
 	prefix: window.__VELO_BASE + "view/",
@@ -188,15 +192,30 @@ function setStatus(message, error = false) {
 	browserStatus.hidden = !message;
 }
 async function connectProxy(url, signal) {
-	await registerSW();
-	await scramjetReady;
-	await window.connectService([...window.__VELO_SERVICES], async (serviceUrl, attemptSignal) => {
-		attemptSignal.throwIfAborted();
-		await connection.setTransport(window.__VELO_BASE + "lib/e/index.mjs?v=64c6bc76c5b3", [{ wisp: serviceUrl }]);
-		const response = await probeClient.fetch(url, { method: "GET", redirect: "follow", signal: attemptSignal });
-		await response.body?.cancel();
-		if (response.status >= 500 || [403, 407, 429].includes(response.status)) throw new Error("upstream unavailable");
-	}, (index, total) => setStatus("connecting to service " + index + "/" + total), signal);
+	runtimeReady ||= Promise.all([registerSW(), scramjetReady]);
+	await runtimeReady;
+	if (activeService) return;
+	if (!serviceReady) {
+		const saved = localStorage.getItem(serviceKey);
+		const servers = [...window.__VELO_SERVICES];
+		if (saved && servers.includes(saved)) servers.unshift(...servers.splice(servers.indexOf(saved), 1));
+		serviceReady = window.connectService(servers, async (serviceUrl, attemptSignal) => {
+			attemptSignal.throwIfAborted();
+			await connection.setTransport(window.__VELO_BASE + "lib/e/index.mjs?v=64c6bc76c5b3", [{ wisp: serviceUrl }]);
+			const response = await probeClient.fetch(url, { method: "GET", redirect: "follow", signal: attemptSignal });
+			await response.body?.cancel();
+			if (response.status >= 500 || [403, 407, 429].includes(response.status)) throw new Error("upstream unavailable");
+		}, (index, total) => setStatus("connecting to service " + index + "/" + total), signal, 3500).then((service) => {
+			activeService = service;
+			localStorage.setItem(serviceKey, service);
+			return service;
+		}).catch((error) => {
+			serviceReady = null;
+			throw error;
+		});
+	}
+	await serviceReady;
+	signal.throwIfAborted();
 }
 async function navigate(value) {
 	if (!value.trim()) return;
