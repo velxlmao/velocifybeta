@@ -17,17 +17,36 @@ export default {
 };
 
 export class Velocord {
-	constructor(state) {
+	constructor(state, env) {
 		this.state = state;
+		this.env = env;
 		this.sockets = new Map();
 	}
 	async fetch(request) {
 		const url = new URL(request.url);
+		if (url.pathname === "/admin/clear" && request.method === "POST") return this.clearContent(request);
 		if (url.pathname === "/connect") return this.connect(request, url.searchParams.get("token"));
 		if (url.pathname === "/api/profile" && request.method === "POST") return this.profile(await request.json());
 		if (url.pathname === "/api/state" && request.method === "GET") return this.snapshot(url.searchParams.get("token"));
 		if (url.pathname === "/api/action" && request.method === "POST") return this.action(await request.json());
 		return json({ error: "not found" }, 404);
+	}
+	async clearContent(request) {
+		if (!this.env.ADMIN_KEY || request.headers.get("authorization") !== "Bearer " + this.env.ADMIN_KEY) return json({ error: "unauthorized" }, 401);
+		const dms = await this.state.storage.list({ prefix: "dm:" });
+		if (dms.size) await this.state.storage.delete([...dms.keys()]);
+		const servers = await this.all("server:");
+		for (const server of servers) {
+			for (const channel of server.channels) channel.messages = [];
+			await this.state.storage.put("server:" + server.id, server);
+		}
+		const groups = await this.all("group:");
+		for (const group of groups) {
+			group.messages = [];
+			await this.state.storage.put("group:" + group.id, group);
+		}
+		this.notifyAll();
+		return json({ ok: true, dms: dms.size, servers: servers.length, groups: groups.length });
 	}
 	async userFromToken(token) {
 		const id = token && await this.state.storage.get("token:" + token);
