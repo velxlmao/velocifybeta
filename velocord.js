@@ -176,7 +176,7 @@
 		home.className = "vc-server" + (view.type === "home" || view.type === "dm" ? " active" : "");
 		home.type = "button";
 		const homeIcon = document.createElement("img");
-		homeIcon.src = "velocord-icon.svg?v=25";
+		homeIcon.src = "velocord-icon.svg?v=26";
 		homeIcon.alt = "";
 		home.append(homeIcon);
 		home.title = "direct messages";
