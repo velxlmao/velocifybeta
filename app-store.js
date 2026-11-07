@@ -21,7 +21,7 @@
 
 	function sync() {
 		velocordButton.hidden = !installed;
-		actionButton.textContent = installed ? "uninstall" : "install";
+		actionButton.textContent = installed ? "remove" : "↓ install";
 		actionButton.classList.toggle("remove", installed);
 		status.textContent = installed ? "installed" : "available";
 		packageElement.classList.toggle("installed", installed);

@@ -175,7 +175,10 @@
 		const home = document.createElement("button");
 		home.className = "vc-server" + (view.type === "home" || view.type === "dm" ? " active" : "");
 		home.type = "button";
-		home.textContent = "V";
+		const homeIcon = document.createElement("img");
+		homeIcon.src = "velocord-icon.svg";
+		homeIcon.alt = "";
+		home.append(homeIcon);
 		home.title = "direct messages";
 		home.addEventListener("click", () => { view = { type: "home" }; render(); });
 		serversElement.append(home);
