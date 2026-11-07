@@ -5,12 +5,35 @@
 	const input = win.querySelector(".wallpaper-input");
 	const preview = win.querySelector(".wallpaper-preview");
 	const status = win.querySelector(".wallpaper-status");
+	const themeSelect = win.querySelector(".theme-select");
+	const opacitySlider = win.querySelector(".opacity-slider");
+	const opacityValue = win.querySelector(".opacity-value");
+	const titlebarSelect = win.querySelector(".titlebar-select");
+	const defaults = { theme: "velocify", opacity: "48", titlebar: "velocify" };
 	let open = false;
 	let minimized = false;
 	let maximized = false;
 	let restoreStyle = "";
 	let animation;
 	let wallpaperUrl;
+
+	function applyTheme(value) {
+		document.documentElement.dataset.theme = value;
+		themeSelect.value = value;
+		localStorage.setItem("velocify-theme", value);
+	}
+	function applyOpacity(value) {
+		const opacity = String(Math.min(90, Math.max(25, Number(value) || Number(defaults.opacity))));
+		document.documentElement.style.setProperty("--window-opacity", opacity + "%");
+		opacitySlider.value = opacity;
+		opacityValue.value = opacity + "%";
+		localStorage.setItem("velocify-opacity", opacity);
+	}
+	function applyTitlebar(value) {
+		document.documentElement.dataset.titlebar = value;
+		titlebarSelect.value = value;
+		localStorage.setItem("velocify-titlebar", value);
+	}
 
 	function database() {
 		return new Promise((resolve, reject) => {
@@ -109,10 +132,19 @@
 		await writeWallpaper();
 		applyWallpaper();
 	});
+	themeSelect.addEventListener("change", () => applyTheme(themeSelect.value));
+	opacitySlider.addEventListener("input", () => applyOpacity(opacitySlider.value));
+	titlebarSelect.addEventListener("change", () => applyTitlebar(titlebarSelect.value));
+	win.querySelector(".theme-reset").addEventListener("click", () => applyTheme(defaults.theme));
+	win.querySelector(".opacity-reset").addEventListener("click", () => applyOpacity(defaults.opacity));
+	win.querySelector(".titlebar-reset").addEventListener("click", () => applyTitlebar(defaults.titlebar));
 	button.addEventListener("click", showWindow);
 	win.querySelector(".settings-minimize").addEventListener("click", minimize);
 	win.querySelector(".settings-maximize").addEventListener("click", toggleMaximize);
 	win.querySelector(".settings-close").addEventListener("click", close);
 	makeDraggable(win, win.querySelector(".window-titlebar"));
+	applyTheme(localStorage.getItem("velocify-theme") || defaults.theme);
+	applyOpacity(localStorage.getItem("velocify-opacity") || defaults.opacity);
+	applyTitlebar(localStorage.getItem("velocify-titlebar") || defaults.titlebar);
 	readWallpaper().then(applyWallpaper).catch(() => applyWallpaper());
 })();
