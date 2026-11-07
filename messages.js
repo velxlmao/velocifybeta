@@ -79,6 +79,12 @@
 		if (!token) return showOnboarding();
 		try {
 			data = await request("/api/state?token=" + encodeURIComponent(token));
+			if (!data.user.browserId) {
+				await request("/api/profile", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ token, displayName: data.user.displayName, username: data.user.username, avatar: data.user.avatar, browserId: window.__VELO_BROWSER_ID, ownerToken: window.__VELO_OWNER_TOKENS?.messages }) });
+				return refresh();
+			}
+			if (data.chatBanned) return showBanned();
+			win.querySelector(".chat-ban-layer")?.remove();
 			onboarding.hidden = true;
 			app.hidden = false;
 			render();
@@ -88,6 +94,25 @@
 			localStorage.removeItem(tokenKey);
 			showOnboarding();
 		}
+	}
+	function showBanned() {
+		onboarding.hidden = true;
+		app.hidden = true;
+		if (win.querySelector(".chat-ban-layer")) return;
+		const layer = document.createElement("div");
+		layer.className = "chat-ban-layer";
+		const message = document.createElement("strong");
+		message.className = "chat-ban-message";
+		message.textContent = "you have been banned from messages by the website owner";
+		layer.append(message);
+		win.querySelector(".messages-shell").append(layer);
+	}
+	function ownerTag(user) {
+		if (!user?.owner) return document.createDocumentFragment();
+		const tag = document.createElement("small");
+		tag.className = "owner-tag";
+		tag.textContent = "owner";
+		return tag;
 	}
 	function connect() {
 		if (socket && socket.readyState < 2) return;
@@ -178,6 +203,7 @@
 		const copy = document.createElement("span");
 		const strong = document.createElement("strong");
 		strong.textContent = data.user.displayName;
+		strong.append(ownerTag(data.user));
 		const small = document.createElement("small");
 		small.textContent = "@" + data.user.username;
 		copy.append(strong, small);
@@ -228,6 +254,7 @@
 		if (context.type === "group" && !mine) {
 			const name = document.createElement("strong");
 			name.textContent = author.displayName;
+			name.append(ownerTag(author));
 			bubble.append(name);
 		}
 		const text = document.createElement("p");
@@ -235,7 +262,7 @@
 		const meta = document.createElement("small");
 		meta.textContent = new Date(message.at).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }) + (message.editedAt ? " edited" : "");
 		bubble.append(text, meta);
-		if (mine) {
+		if (mine || data.user.owner) {
 			bubble.addEventListener("dblclick", () => messageMenu(message, context));
 			bubble.title = "double-click to edit or delete";
 		}
@@ -286,7 +313,7 @@
 	}
 	function messageMenu(message, context) {
 		const container = document.createElement("div");
-		container.append(form("edit message", [field("message", "text", message.text)], (values) => context.type === "dm" ? action("dm_edit", { userId: context.id, messageId: message.id, text: values.get("text") }) : action("group_edit", { groupId: context.group.id, messageId: message.id, text: values.get("text") }), "save"));
+		if (message.authorId === data.user.id) container.append(form("edit message", [field("message", "text", message.text)], (values) => context.type === "dm" ? action("dm_edit", { userId: context.id, messageId: message.id, text: values.get("text") }) : action("group_edit", { groupId: context.group.id, messageId: message.id, text: values.get("text") }), "save"));
 		const remove = document.createElement("button");
 		remove.className = "msg-danger";
 		remove.type = "button";
@@ -304,11 +331,16 @@
 		const values = new FormData(profileForm);
 		const error = profileForm.querySelector(".msg-error");
 		try {
-			const result = await request("/api/profile", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ token, displayName: values.get("displayName"), username: values.get("username"), avatar: await imageData(values.get("avatar")) }) });
+			const result = await request("/api/profile", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ token, displayName: values.get("displayName"), username: values.get("username"), avatar: await imageData(values.get("avatar")), browserId: window.__VELO_BROWSER_ID, ownerToken: window.__VELO_OWNER_TOKENS?.messages }) });
 			token = result.token;
 			localStorage.setItem(tokenKey, token);
 			await refresh();
 		} catch (problem) { error.textContent = problem.message; }
+	});
+	document.addEventListener("velocify-owner-login", async () => {
+		if (!token || !data?.user) return;
+		await request("/api/profile", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ token, displayName: data.user.displayName, username: data.user.username, avatar: data.user.avatar, browserId: window.__VELO_BROWSER_ID, ownerToken: window.__VELO_OWNER_TOKENS.messages }) });
+		refresh();
 	});
 	compose.addEventListener("submit", async (event) => {
 		event.preventDefault();

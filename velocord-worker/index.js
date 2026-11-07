@@ -1,13 +1,14 @@
 const headers = {
 	"access-control-allow-origin": "*",
 	"access-control-allow-methods": "GET,POST,OPTIONS",
-	"access-control-allow-headers": "content-type",
+	"access-control-allow-headers": "content-type,authorization",
 	"content-type": "application/json",
 };
 const json = (value, status = 200) => new Response(JSON.stringify(value), { status, headers });
 const clean = (value, max) => String(value || "").trim().slice(0, max);
 const pair = (a, b) => [a, b].sort().join(":");
 const code = () => crypto.randomUUID().replaceAll("-", "").slice(0, 8).toUpperCase();
+const hour = 60 * 60 * 1000;
 
 export default {
 	fetch(request, env) {
@@ -24,12 +25,66 @@ export class Velocord {
 	}
 	async fetch(request) {
 		const url = new URL(request.url);
+		if (url.pathname === "/api/visitor" && request.method === "POST") return this.visitor(await request.json());
+		if (url.pathname === "/api/owner/login" && request.method === "POST") return this.ownerLogin(await request.json());
+		if (url.pathname === "/api/owner/state" && request.method === "GET") return this.ownerState(request);
+		if (url.pathname === "/api/owner/action" && request.method === "POST") return this.ownerAction(request, await request.json());
 		if (url.pathname === "/admin/clear" && request.method === "POST") return this.clearContent(request);
 		if (url.pathname === "/connect") return this.connect(request, url.searchParams.get("token"));
 		if (url.pathname === "/api/profile" && request.method === "POST") return this.profile(await request.json());
 		if (url.pathname === "/api/state" && request.method === "GET") return this.snapshot(url.searchParams.get("token"));
 		if (url.pathname === "/api/action" && request.method === "POST") return this.action(await request.json());
 		return json({ error: "not found" }, 404);
+	}
+	async ownerFromRequest(request) {
+		const token = request.headers.get("authorization")?.replace(/^Bearer /, "");
+		const expires = token && await this.state.storage.get("owner-session:" + token);
+		return expires > Date.now();
+	}
+	async ownerLogin(body) {
+		if (!this.env.OWNER_PASSWORD || body.password !== this.env.OWNER_PASSWORD) return json({ error: "invalid password" }, 401);
+		const token = crypto.randomUUID();
+		await this.state.storage.put("owner-session:" + token, Date.now() + 12 * hour, { expirationTtl: 12 * 60 * 60 });
+		return json({ token });
+	}
+	async visitor(body) {
+		const browserId = clean(body.browserId, 80);
+		if (!browserId) return json({ error: "invalid browser" }, 400);
+		const key = "visitor:" + browserId;
+		const visitor = await this.state.storage.get(key) || { browserId, names: [], firstSeen: Date.now() };
+		const name = clean(body.name, 32);
+		if (name && !visitor.siteName) {
+			visitor.siteName = name;
+			visitor.names = [name];
+		}
+		visitor.lastSeen = Date.now();
+		await this.state.storage.put(key, visitor);
+		return json({ siteName: visitor.siteName || "", siteBanned: Boolean(await this.state.storage.get("site-ban:" + browserId)) });
+	}
+	async ownerState(request) {
+		if (!await this.ownerFromRequest(request)) return json({ error: "unauthorized" }, 401);
+		const visitors = await this.all("visitor:");
+		const users = await this.all("user:");
+		const userMap = new Map();
+		for (const user of users) if (user.browserId) {
+			const item = userMap.get(user.browserId) || [];
+			if (!item.includes(user.displayName)) item.push(user.displayName);
+			userMap.set(user.browserId, item);
+		}
+		for (const visitor of visitors) visitor.names = [...new Set([...(visitor.names || []), ...(userMap.get(visitor.browserId) || [])])];
+		return json({ visitors, users: users.map((user) => this.publicUser(user)), siteBans: [...(await this.state.storage.list({ prefix: "site-ban:" })).keys()].map((key) => key.slice(9)), chatBans: [...(await this.state.storage.list({ prefix: "chat-ban:" })).keys()].map((key) => key.slice(9)) });
+	}
+	async ownerAction(request, body) {
+		if (!await this.ownerFromRequest(request)) return json({ error: "unauthorized" }, 401);
+		const browserId = clean(body.browserId, 80);
+		const userId = clean(body.userId, 80);
+		if (body.type === "site_ban" && browserId) await this.state.storage.put("site-ban:" + browserId, Date.now());
+		else if (body.type === "site_unban" && browserId) await this.state.storage.delete("site-ban:" + browserId);
+		else if (body.type === "chat_ban" && userId) await this.state.storage.put("chat-ban:" + userId, Date.now());
+		else if (body.type === "chat_unban" && userId) await this.state.storage.delete("chat-ban:" + userId);
+		else return json({ error: "invalid action" }, 400);
+		this.notifyAll();
+		return json({ ok: true });
 	}
 	async clearContent(request) {
 		if (!this.env.ADMIN_KEY || request.headers.get("authorization") !== "Bearer " + this.env.ADMIN_KEY) return json({ error: "unauthorized" }, 401);
@@ -63,7 +118,8 @@ export class Velocord {
 		const token = user?.token || crypto.randomUUID();
 		user ||= { id: crypto.randomUUID(), token, friends: [], requests: [], createdAt: Date.now() };
 		if (user.username && user.username !== username) await this.state.storage.delete("username:" + user.username);
-		Object.assign(user, { displayName, username, avatar });
+		const ownerSession = body.ownerToken && await this.state.storage.get("owner-session:" + clean(body.ownerToken, 80));
+		Object.assign(user, { displayName, username, avatar, browserId: clean(body.browserId, 80), ownerUntil: ownerSession > Date.now() ? ownerSession : 0 });
 		await this.state.storage.put({ ["user:" + user.id]: user, ["username:" + username]: user.id, ["token:" + token]: user.id });
 		await this.joinOfficial(user.id);
 		await this.joinPublicGroup(user.id);
@@ -71,7 +127,10 @@ export class Velocord {
 		return json({ token, user: this.publicUser(user) });
 	}
 	publicUser(user) {
-		return { id: user.id, displayName: user.displayName, username: user.username, avatar: user.avatar || "", createdAt: user.createdAt };
+		return { id: user.id, displayName: user.displayName, username: user.username, avatar: user.avatar || "", createdAt: user.createdAt, browserId: user.browserId || "", owner: user.ownerUntil > Date.now() };
+	}
+	isOwner(user) {
+		return user.ownerUntil > Date.now();
 	}
 	async all(prefix) {
 		return [...(await this.state.storage.list({ prefix })).values()];
@@ -121,6 +180,7 @@ export class Velocord {
 		for (const friendId of user.friends) dms[friendId] = await this.state.storage.get("dm:" + pair(user.id, friendId)) || [];
 		return json({
 			user: this.publicUser(user),
+			chatBanned: Boolean(await this.state.storage.get("chat-ban:" + user.id)),
 			friends: user.friends.map((id) => userMap.get(id)).filter(Boolean).map((item) => this.publicUser(item)),
 			requests: user.requests.map((id) => userMap.get(id)).filter(Boolean).map((item) => this.publicUser(item)),
 			servers,
@@ -131,6 +191,7 @@ export class Velocord {
 	async action(body) {
 		const user = await this.userFromToken(body.token);
 		if (!user) return json({ error: "unauthorized" }, 401);
+		if (await this.state.storage.get("chat-ban:" + user.id)) return json({ error: "banned from messaging" }, 403);
 		const type = body.type;
 		if (type === "friend_request") {
 			const id = await this.state.storage.get("username:" + clean(body.username, 24).toLowerCase());
@@ -166,7 +227,7 @@ export class Velocord {
 			const key = "dm:" + pair(user.id, id);
 			const messages = await this.state.storage.get(key) || [];
 			const message = messages.find((item) => item.id === body.messageId);
-			if (!message || message.authorId !== user.id) return json({ error: "forbidden" }, 403);
+			if (!message || message.authorId !== user.id && !this.isOwner(user) || type === "dm_edit" && message.authorId !== user.id) return json({ error: "forbidden" }, 403);
 			if (type === "dm_edit") Object.assign(message, { text: clean(body.text, 2000), editedAt: Date.now() });
 			else messages.splice(messages.indexOf(message), 1);
 			await this.state.storage.put(key, messages);
@@ -195,7 +256,7 @@ export class Velocord {
 			const group = await this.state.storage.get("group:" + body.groupId);
 			if (!group || !group.members.includes(user.id)) return json({ error: "forbidden" }, 403);
 			const message = group.messages.find((item) => item.id === body.messageId);
-			if (!message || (type === "group_edit" && message.authorId !== user.id) || (type === "group_delete" && message.authorId !== user.id && group.ownerId !== user.id)) return json({ error: "forbidden" }, 403);
+			if (!message || type === "group_edit" && message.authorId !== user.id || type === "group_delete" && message.authorId !== user.id && group.ownerId !== user.id && !this.isOwner(user)) return json({ error: "forbidden" }, 403);
 			if (type === "group_edit") Object.assign(message, { text: clean(body.text, 2000), editedAt: Date.now() });
 			else group.messages.splice(group.messages.indexOf(message), 1);
 			await this.state.storage.put("group:" + group.id, group);
@@ -207,12 +268,12 @@ export class Velocord {
 			await this.state.storage.put("server:" + server.id, server);
 		} else if (type === "channel_create") {
 			const server = await this.state.storage.get("server:" + body.serverId);
-			if (!server || server.ownerId !== user.id) return json({ error: "forbidden" }, 403);
+			if (!server || server.ownerId !== user.id && !this.isOwner(user)) return json({ error: "forbidden" }, 403);
 			server.channels.push({ id: crypto.randomUUID(), name: clean(body.name, 30).toLowerCase().replace(/\s+/g, "-") || "new-channel", messages: [] });
 			await this.state.storage.put("server:" + server.id, server);
 		} else if (type === "channel_update" || type === "channel_delete") {
 			const server = await this.state.storage.get("server:" + body.serverId);
-			if (!server || server.ownerId !== user.id) return json({ error: "forbidden" }, 403);
+			if (!server || server.ownerId !== user.id && !this.isOwner(user)) return json({ error: "forbidden" }, 403);
 			const channel = server.channels.find((item) => item.id === body.channelId);
 			if (!channel) return json({ error: "channel not found" }, 404);
 			if (type === "channel_update") channel.name = clean(body.name, 30).toLowerCase().replace(/\s+/g, "-") || channel.name;
@@ -221,13 +282,13 @@ export class Velocord {
 			await this.state.storage.put("server:" + server.id, server);
 		} else if (type === "server_update") {
 			const server = await this.state.storage.get("server:" + body.serverId);
-			if (!server || server.ownerId !== user.id) return json({ error: "forbidden" }, 403);
+			if (!server || server.ownerId !== user.id && !this.isOwner(user)) return json({ error: "forbidden" }, 403);
 			server.name = clean(body.name, 40) || server.name;
 			server.icon = clean(body.icon, 280000) || server.icon;
 			await this.state.storage.put("server:" + server.id, server);
 		} else if (type === "server_delete") {
 			const server = await this.state.storage.get("server:" + body.serverId);
-			if (!server || server.ownerId !== user.id || server.official) return json({ error: "forbidden" }, 403);
+			if (!server || server.ownerId !== user.id && !this.isOwner(user) || server.official && !this.isOwner(user)) return json({ error: "forbidden" }, 403);
 			await this.state.storage.delete("server:" + server.id);
 		} else if (type === "server_send") {
 			const server = await this.state.storage.get("server:" + body.serverId);
@@ -242,7 +303,7 @@ export class Velocord {
 			if (!server || !server.members.includes(user.id)) return json({ error: "forbidden" }, 403);
 			const channel = server.channels.find((item) => item.id === body.channelId);
 			const message = channel?.messages.find((item) => item.id === body.messageId);
-			if (!message || (message.authorId !== user.id && server.ownerId !== user.id)) return json({ error: "forbidden" }, 403);
+			if (!message || message.authorId !== user.id && server.ownerId !== user.id && !this.isOwner(user)) return json({ error: "forbidden" }, 403);
 			if (type === "server_edit") {
 				if (message.authorId !== user.id) return json({ error: "forbidden" }, 403);
 				Object.assign(message, { text: clean(body.text, 2000), editedAt: Date.now() });

@@ -87,6 +87,12 @@
 		if (!token) return showOnboarding();
 		try {
 			data = await request("/api/state?token=" + encodeURIComponent(token));
+			if (!data.user.browserId) {
+				await request("/api/profile", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ token, displayName: data.user.displayName, username: data.user.username, avatar: data.user.avatar, browserId: window.__VELO_BROWSER_ID, ownerToken: window.__VELO_OWNER_TOKENS?.velocord }) });
+				return refresh();
+			}
+			if (data.chatBanned) return showBanned();
+			windowElement.querySelector(".chat-ban-layer")?.remove();
 			onboarding.hidden = true;
 			app.hidden = false;
 			render();
@@ -96,6 +102,25 @@
 			localStorage.removeItem(tokenKey);
 			showOnboarding();
 		}
+	}
+	function showBanned() {
+		onboarding.hidden = true;
+		app.hidden = true;
+		if (windowElement.querySelector(".chat-ban-layer")) return;
+		const layer = document.createElement("div");
+		layer.className = "chat-ban-layer";
+		const message = document.createElement("strong");
+		message.className = "chat-ban-message";
+		message.textContent = "you have been banned from velocord by the website owner";
+		layer.append(message);
+		windowElement.querySelector(".velocord-shell").append(layer);
+	}
+	function ownerTag(user) {
+		if (!user?.owner) return document.createDocumentFragment();
+		const tag = document.createElement("small");
+		tag.className = "owner-tag";
+		tag.textContent = "owner";
+		return tag;
 	}
 	function connect() {
 		if (socket && socket.readyState < 2) return;
@@ -243,6 +268,7 @@
 		item.type = "button";
 		const name = document.createElement("span");
 		name.textContent = user.displayName;
+		name.append(ownerTag(user));
 		item.append(avatar(user, 27), name);
 		return item;
 	}
@@ -258,7 +284,7 @@
 			title.append(" ", official);
 		}
 		sideHead.append(title);
-		if (server.ownerId === data.user.id) {
+		if (server.ownerId === data.user.id || data.user.owner) {
 			const settings = iconButton("server settings", "M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1");
 			settings.addEventListener("click", () => customizeServerModal(server));
 			sideHead.append(settings);
@@ -272,7 +298,7 @@
 		const row = document.createElement("p");
 		row.className = "vc-section-label";
 		row.textContent = "text channels";
-		if (server.ownerId === data.user.id) {
+		if (server.ownerId === data.user.id || data.user.owner) {
 			const add = iconButton("create channel", "M12 5v14M5 12h14");
 			add.style.float = "right";
 			add.addEventListener("click", () => channelModal(server));
@@ -288,7 +314,7 @@
 			item.textContent = "# " + channel.name;
 			item.addEventListener("click", () => { view.channelId = channel.id; render(); });
 			channelRow.append(item);
-			if (server.ownerId === data.user.id) {
+			if (server.ownerId === data.user.id || data.user.owner) {
 				const settings = iconButton("channel settings", "M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1");
 				settings.addEventListener("click", () => channelSettingsModal(server, channel));
 				channelRow.append(settings);
@@ -303,6 +329,7 @@
 		const display = document.createElement("div");
 		display.className = "vc-display";
 		display.textContent = data.user.displayName;
+		display.append(ownerTag(data.user));
 		const username = document.createElement("div");
 		username.className = "vc-username";
 		username.textContent = "@" + data.user.username;
@@ -354,7 +381,8 @@
 		head.className = "vc-message-head";
 		const name = document.createElement("span");
 		name.className = "vc-message-name";
-		name.textContent = author.displayName;
+			name.textContent = author.displayName;
+			name.append(ownerTag(author));
 		const time = document.createElement("time");
 		time.className = "vc-message-time";
 		time.textContent = new Date(message.at).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
@@ -364,7 +392,7 @@
 		text.textContent = message.text;
 		head.append(name, time);
 		const own = message.authorId === data.user.id;
-		const canDelete = own || context.type === "server" && context.server.ownerId === data.user.id;
+		const canDelete = own || data.user.owner || context.type === "server" && context.server.ownerId === data.user.id;
 		if (own || canDelete) {
 			const actions = document.createElement("span");
 			actions.className = "vc-message-actions";
@@ -444,7 +472,7 @@
 		fileLabel.append(file);
 		const content = document.createElement("div");
 		content.append(modalForm("server settings", [nameField, fileLabel], async (values) => action("server_update", { serverId: server.id, name: values.get("name"), icon: await fileToAvatar(values.get("icon")) }), "save changes"));
-		if (!server.official) {
+		if (!server.official || data.user.owner) {
 			const remove = document.createElement("button");
 			remove.className = "vc-danger";
 			remove.type = "button";
@@ -476,7 +504,7 @@
 		fileLabel.append(file);
 		openModal(modalForm("user settings", [formField("display name", "displayName", data.user.displayName), formField("username", "username", data.user.username), fileLabel], async (values) => {
 			const uploaded = await fileToAvatar(values.get("avatar"));
-			await request("/api/profile", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ token, displayName: values.get("displayName"), username: values.get("username"), avatar: uploaded || data.user.avatar }) });
+			await request("/api/profile", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ token, displayName: values.get("displayName"), username: values.get("username"), avatar: uploaded || data.user.avatar, browserId: window.__VELO_BROWSER_ID, ownerToken: window.__VELO_OWNER_TOKENS?.velocord }) });
 			await refresh();
 		}, "save settings"));
 	}
@@ -492,11 +520,16 @@
 		const values = new FormData(profileForm);
 		const error = profileForm.querySelector(".vc-error");
 		try {
-			const result = await request("/api/profile", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ token, displayName: values.get("displayName"), username: values.get("username"), avatar: await fileToAvatar(values.get("avatar")) }) });
+			const result = await request("/api/profile", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ token, displayName: values.get("displayName"), username: values.get("username"), avatar: await fileToAvatar(values.get("avatar")), browserId: window.__VELO_BROWSER_ID, ownerToken: window.__VELO_OWNER_TOKENS?.velocord }) });
 			token = result.token;
 			localStorage.setItem(tokenKey, token);
 			await refresh();
 		} catch (problem) { error.textContent = problem.message; }
+	});
+	document.addEventListener("velocify-owner-login", async () => {
+		if (!token || !data?.user) return;
+		await request("/api/profile", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ token, displayName: data.user.displayName, username: data.user.username, avatar: data.user.avatar, browserId: window.__VELO_BROWSER_ID, ownerToken: window.__VELO_OWNER_TOKENS.velocord }) });
+		refresh();
 	});
 	profileForm.avatar.addEventListener("change", async () => {
 		const source = await fileToAvatar(profileForm.avatar.files[0]);
