@@ -230,7 +230,11 @@
 		head.replaceChildren(avatar(friend, 34));
 		const title = document.createElement("span");
 		title.textContent = friend.displayName;
-		head.append(title);
+		head.append(title, conversationButton(data.user.owner ? "delete dm" : "close dm", async () => {
+			await action("dm_close", { userId: friend.id });
+			view = undefined;
+			render();
+		}));
 		for (const message of data.dms[friend.id] || []) renderMessage(message, message.authorId === data.user.id ? data.user : friend, { type: "dm", id: friend.id });
 		compose.hidden = false;
 	}
@@ -242,8 +246,24 @@
 		const sub = document.createElement("small");
 		sub.textContent = group.memberUsers.length + " members";
 		head.append(title, sub);
+		if (!group.official || data.user.owner) head.append(conversationButton(data.user.owner || group.ownerId === data.user.id ? "delete group" : "leave group", async () => {
+			await action("group_close", { groupId: group.id });
+			view = undefined;
+			render();
+		}));
 		for (const message of group.messages) renderMessage(message, message.author || data.user, { type: "group", group });
 		compose.hidden = false;
+	}
+	function conversationButton(label, handler) {
+		const button = document.createElement("button");
+		button.className = "msg-conversation-action";
+		button.type = "button";
+		button.textContent = label;
+		button.addEventListener("click", async () => {
+			button.disabled = true;
+			try { await handler(); } catch (error) { button.disabled = false; button.textContent = error.message; }
+		});
+		return button;
 	}
 	function renderMessage(message, author, context) {
 		const mine = message.authorId === data.user.id;

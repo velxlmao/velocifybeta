@@ -231,6 +231,12 @@ export class Velocord {
 			if (type === "dm_edit") Object.assign(message, { text: clean(body.text, 2000), editedAt: Date.now() });
 			else messages.splice(messages.indexOf(message), 1);
 			await this.state.storage.put(key, messages);
+		} else if (type === "dm_close") {
+			const id = clean(body.userId, 64);
+			if (!user.friends.includes(id)) return json({ error: "conversation not found" }, 404);
+			user.friends = user.friends.filter((item) => item !== id);
+			await this.state.storage.put("user:" + user.id, user);
+			if (this.isOwner(user)) await this.state.storage.delete("dm:" + pair(user.id, id));
 		} else if (type === "server_create") {
 			const server = { id: crypto.randomUUID(), name: clean(body.name, 40) || "new server", code: clean(body.code, 16).toUpperCase() || code(), ownerId: user.id, members: [user.id], channels: [{ id: crypto.randomUUID(), name: "general", messages: [] }], icon: clean(body.icon, 280000) };
 			const duplicate = (await this.all("server:")).some((item) => item.code === server.code);
@@ -252,6 +258,15 @@ export class Velocord {
 			group.messages.push({ id: crypto.randomUUID(), authorId: user.id, author: this.publicUser(user), text: clean(body.text, 2000), at: Date.now() });
 			group.messages = group.messages.slice(-200);
 			await this.state.storage.put("group:" + group.id, group);
+		} else if (type === "group_close") {
+			const group = await this.state.storage.get("group:" + body.groupId);
+			if (!group || !group.members.includes(user.id)) return json({ error: "group not found" }, 404);
+			if (group.official && !this.isOwner(user)) return json({ error: "official group cannot be deleted" }, 403);
+			if (group.ownerId === user.id || this.isOwner(user)) await this.state.storage.delete("group:" + group.id);
+			else {
+				group.members = group.members.filter((id) => id !== user.id);
+				await this.state.storage.put("group:" + group.id, group);
+			}
 		} else if (type === "group_edit" || type === "group_delete") {
 			const group = await this.state.storage.get("group:" + body.groupId);
 			if (!group || !group.members.includes(user.id)) return json({ error: "forbidden" }, 403);
